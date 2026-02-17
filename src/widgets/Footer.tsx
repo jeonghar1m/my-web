@@ -2,10 +2,18 @@ import { SiInstagram, SiGithub, SiLinkedin } from "react-icons/si";
 import { Mail } from "lucide-react";
 
 const SOCIAL_LINKS = [
-  { icon: SiInstagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: SiGithub, href: "https://github.com", label: "GitHub" },
-  { icon: SiLinkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:hello@jeongharim.com", label: "Email" },
+  {
+    icon: SiInstagram,
+    href: "https://instagram.com/jeonghar1m",
+    label: "Instagram",
+  },
+  { icon: SiGithub, href: "https://github.com/jeonghar1m", label: "GitHub" },
+  {
+    icon: SiLinkedin,
+    href: "https://www.linkedin.com/in/jeongharim/",
+    label: "LinkedIn",
+  },
+  { icon: Mail, href: "mailto:me@jeongharim.com", label: "Email" },
 ];
 
 const Footer = () => {
