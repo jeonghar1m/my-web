@@ -1,4 +1,5 @@
 import { Flex } from "@radix-ui/themes";
+import { BreadcrumbNav } from "@/shared/ui/breadcrumb";
 import PortfolioData from "../portfolio-data";
 import PortfolioInfoBox from "./portfolio-info-box";
 
@@ -14,6 +15,12 @@ const PortfolioDetailPage = async ({
 
   return (
     <Flex direction="column" gap="4">
+      <BreadcrumbNav
+        items={[
+          { label: "Portfolio", href: "/portfolio" },
+          { label: portfolio.title },
+        ]}
+      />
       <h2 className="text-2xl font-bold">{portfolio.title}</h2>
       <PortfolioInfoBox portfolio={portfolio} />
       <div>{portfolio.description}</div>
