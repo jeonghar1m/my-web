@@ -1,4 +1,5 @@
 import { Flex } from "@radix-ui/themes";
+import CareerList from "./career-list";
 
 const HomePage = () => {
   return (
@@ -7,6 +8,7 @@ const HomePage = () => {
       <p className="mt-8 text-center text-neutral-700">
         프론트엔드 개발자 정하림입니다.
       </p>
+      <CareerList />
     </Flex>
   );
 };
