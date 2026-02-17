@@ -1,4 +1,5 @@
 import { Flex } from "@radix-ui/themes";
+import { notFound } from "next/navigation";
 import { BreadcrumbNav } from "@/shared/ui/breadcrumb";
 import PortfolioData from "../portfolio-data";
 import PortfolioInfoBox from "./portfolio-info-box";
@@ -11,7 +12,7 @@ const PortfolioDetailPage = async ({
   const { id } = await params;
   const portfolio = PortfolioData.find((portfolio) => portfolio.id === +id);
 
-  if (!portfolio) return null;
+  if (!portfolio) notFound();
 
   return (
     <Flex direction="column" gap="4">
