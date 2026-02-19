@@ -1,7 +1,7 @@
 import { Flex } from "@radix-ui/themes";
 import CareerList from "./career-list";
 
-const HomePage = () => {
+export default function HomePage() {
   return (
     <Flex direction="column">
       <h2 className="text-2xl font-bold">안녕하세요.</h2>
@@ -11,6 +11,4 @@ const HomePage = () => {
       <CareerList />
     </Flex>
   );
-};
-
-export default HomePage;
+}

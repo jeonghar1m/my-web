@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   },
 ];
 
-const Header = () => {
+export default function Header() {
   return (
     <header className="bg-neutral-700 text-white px-8 pt-8 pb-4">
       <div className="max-w-4xl mx-auto">
@@ -45,6 +45,4 @@ const Header = () => {
       </div>
     </header>
   );
-};
-
-export default Header;
+}

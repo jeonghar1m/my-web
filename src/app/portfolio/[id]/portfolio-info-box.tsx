@@ -5,7 +5,7 @@ interface PortfolioInfoBoxProps {
   portfolio: Portfolio;
 }
 
-const PortfolioInfoBox = ({ portfolio }: PortfolioInfoBoxProps) => {
+export default function PortfolioInfoBox({ portfolio }: PortfolioInfoBoxProps) {
   const { githubUrl, productionUrl, startDate, endDate } = portfolio;
 
   return (
@@ -48,6 +48,4 @@ const PortfolioInfoBox = ({ portfolio }: PortfolioInfoBoxProps) => {
       </Flex>
     </Section>
   );
-};
-
-export default PortfolioInfoBox;
+}

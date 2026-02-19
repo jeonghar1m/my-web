@@ -4,11 +4,11 @@ import { BreadcrumbNav } from "@/shared/ui/breadcrumb";
 import PortfolioData from "../portfolio-data";
 import PortfolioInfoBox from "./portfolio-info-box";
 
-const PortfolioDetailPage = async ({
+export default async function PortfolioDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>;
-}) => {
+}) {
   const { id } = await params;
   const portfolio = PortfolioData.find((portfolio) => portfolio.id === +id);
 
@@ -27,6 +27,4 @@ const PortfolioDetailPage = async ({
       <div>{portfolio.description}</div>
     </Flex>
   );
-};
-
-export default PortfolioDetailPage;
+}

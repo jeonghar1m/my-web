@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   description: "프론트엔드 개발자 정하림의 포트폴리오 웹사이트",
 };
 
-const RootLayout = ({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) => {
+}>) {
   return (
     <html lang="ko">
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col`}>
@@ -35,6 +35,4 @@ const RootLayout = ({
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}

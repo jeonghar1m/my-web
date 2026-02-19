@@ -16,7 +16,7 @@ const SOCIAL_LINKS = [
   { icon: Mail, href: "mailto:me@jeongharim.com", label: "Email" },
 ];
 
-const Footer = () => {
+export default function Footer() {
   return (
     <footer className="bg-neutral-900 text-neutral-400 px-8 py-8">
       <div className="max-w-4xl mx-auto">
@@ -43,6 +43,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

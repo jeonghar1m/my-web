@@ -17,7 +17,7 @@ const careers = [
 
 type SortOrder = "latest" | "oldest";
 
-const CareerList = () => {
+export default function CareerList() {
   const [sortOrder, setSortOrder] = useState<SortOrder>("latest");
 
   const sortedCareers = useMemo(() => {
@@ -57,6 +57,4 @@ const CareerList = () => {
       </ul>
     </section>
   );
-};
-
-export default CareerList;
+}
