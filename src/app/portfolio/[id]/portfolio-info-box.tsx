@@ -1,3 +1,4 @@
+import { YEAR_MONTH_DAY_FORMAT } from "@/shared/constants/date";
 import { Portfolio } from "@/shared/model/portfolio";
 import { Flex, Section, Text } from "@radix-ui/themes";
 
@@ -41,7 +42,7 @@ export default function PortfolioInfoBox({ portfolio }: PortfolioInfoBoxProps) {
           <Flex align="center" gap="2">
             <h3 className="text-lg font-semibold">진행기간</h3>
             <Text>
-              {startDate.format("YYYY.MM.DD")} ~ {endDate.format("YYYY.MM.DD")}
+              {startDate.format(YEAR_MONTH_DAY_FORMAT)} ~ {endDate.format(YEAR_MONTH_DAY_FORMAT)}
             </Text>
           </Flex>
         )}
