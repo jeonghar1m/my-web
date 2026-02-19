@@ -1,3 +1,4 @@
+import { YEAR_MONTH_FORMAT } from "@/shared/constants/date";
 import { Portfolio } from "@/shared/model/portfolio";
 import Link from "next/link";
 import Image from "next/image";
@@ -34,7 +35,7 @@ export default function PortfolioCard({ portfolio }: PortfolioCardProps) {
         </h3>
         {startDate && endDate && (
           <p className="mt-1 text-sm text-neutral-500">
-            {startDate.format("YYYY.MM")} ~ {endDate.format("YYYY.MM")}
+            {startDate.format(YEAR_MONTH_FORMAT)} ~ {endDate.format(YEAR_MONTH_FORMAT)}
           </p>
         )}
       </div>
