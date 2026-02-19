@@ -18,7 +18,7 @@ export default async function PortfolioDetailPage({
     <Flex direction="column" gap="4">
       <BreadcrumbNav
         items={[
-          { label: "Portfolio", href: "/portfolio" },
+          { label: "포트폴리오", href: "/portfolio" },
           { label: portfolio.title },
         ]}
       />
