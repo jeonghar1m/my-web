@@ -1,7 +1,7 @@
 import PortfolioData from "./portfolio-data";
 import PortfolioCard from "./portfolio-card";
 
-const PortfolioPage = () => {
+export default function PortfolioPage() {
   return (
     <div>
       <h2 className="text-2xl font-bold">포트폴리오</h2>
@@ -12,6 +12,4 @@ const PortfolioPage = () => {
       </div>
     </div>
   );
-};
-
-export default PortfolioPage;
+}

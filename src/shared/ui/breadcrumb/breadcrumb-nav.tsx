@@ -14,7 +14,7 @@ export interface BreadcrumbNavItem {
   href?: string;
 }
 
-const BreadcrumbNav = ({ items }: { items: BreadcrumbNavItem[] }) => {
+export default function BreadcrumbNav({ items }: { items: BreadcrumbNavItem[] }) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -38,6 +38,4 @@ const BreadcrumbNav = ({ items }: { items: BreadcrumbNavItem[] }) => {
       </BreadcrumbList>
     </Breadcrumb>
   );
-};
-
-export default BreadcrumbNav;
+}

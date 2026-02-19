@@ -6,7 +6,7 @@ interface PortfolioCardProps {
   portfolio: Portfolio;
 }
 
-const PortfolioCard = ({ portfolio }: PortfolioCardProps) => {
+export default function PortfolioCard({ portfolio }: PortfolioCardProps) {
   const { id, thumbnailUrl, title, startDate, endDate } = portfolio;
   return (
     <Link
@@ -40,6 +40,4 @@ const PortfolioCard = ({ portfolio }: PortfolioCardProps) => {
       </div>
     </Link>
   );
-};
-
-export default PortfolioCard;
+}
