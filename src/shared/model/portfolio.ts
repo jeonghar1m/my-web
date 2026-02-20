@@ -1,5 +1,4 @@
 import { Dayjs } from "dayjs";
-import { ReactNode } from "react";
 
 export interface Portfolio {
   id: number;
@@ -10,5 +9,5 @@ export interface Portfolio {
   productionUrl?: string;
   startDate?: Dayjs;
   endDate?: Dayjs;
-  description: ReactNode;
+  description: string;
 }

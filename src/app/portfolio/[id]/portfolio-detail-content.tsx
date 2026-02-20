@@ -1,0 +1,28 @@
+"use client";
+
+import { Flex } from "@radix-ui/themes";
+import { notFound } from "next/navigation";
+import { BreadcrumbNav } from "@/shared/ui/breadcrumb";
+import useGetPortfolio from "@/shared/lib/api/portfolio/use-get-portfolio";
+import PortfolioInfoBox from "./portfolio-info-box";
+import { MarkdownRenderer } from "@/shared/ui/markdown";
+
+export default function PortfolioDetailContent({ id }: { id: number }) {
+  const { data: portfolio, isError } = useGetPortfolio(id);
+
+  if (isError) notFound();
+
+  return (
+    <Flex direction="column" gap="4">
+      <BreadcrumbNav
+        items={[
+          { label: "포트폴리오", href: "/portfolio" },
+          { label: portfolio?.title || "" },
+        ]}
+      />
+      <h2 className="text-2xl font-bold">{portfolio?.title}</h2>
+      <PortfolioInfoBox portfolio={portfolio} />
+      <MarkdownRenderer content={portfolio?.description || ""} />
+    </Flex>
+  );
+}

@@ -3,11 +3,11 @@ import { Portfolio } from "@/shared/model/portfolio";
 import { Flex, Section, Text } from "@radix-ui/themes";
 
 interface PortfolioInfoBoxProps {
-  portfolio: Portfolio;
+  portfolio?: Portfolio;
 }
 
 export default function PortfolioInfoBox({ portfolio }: PortfolioInfoBoxProps) {
-  const { githubUrl, productionUrl, startDate, endDate } = portfolio;
+  const { githubUrl, productionUrl, startDate, endDate } = portfolio || {};
 
   return (
     <Section size="1" className="rounded-lg bg-gray-100 p-5">
@@ -42,7 +42,8 @@ export default function PortfolioInfoBox({ portfolio }: PortfolioInfoBoxProps) {
           <Flex align="center" gap="2">
             <h3 className="text-lg font-semibold">진행기간</h3>
             <Text>
-              {startDate.format(YEAR_MONTH_DAY_FORMAT)} ~ {endDate.format(YEAR_MONTH_DAY_FORMAT)}
+              {startDate.format(YEAR_MONTH_DAY_FORMAT)} ~{" "}
+              {endDate.format(YEAR_MONTH_DAY_FORMAT)}
             </Text>
           </Flex>
         )}
