@@ -1,8 +1,6 @@
-import { Flex } from "@radix-ui/themes";
-import { notFound } from "next/navigation";
-import { BreadcrumbNav } from "@/shared/ui/breadcrumb";
-import PortfolioData from "../portfolio-data";
-import PortfolioInfoBox from "./portfolio-info-box";
+import { Suspense } from "react";
+import PortfolioDetailContent from "./portfolio-detail-content";
+import PortfolioDetailSkeleton from "./portfolio-detail-skeleton";
 
 export default async function PortfolioDetailPage({
   params,
@@ -10,21 +8,10 @@ export default async function PortfolioDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const portfolio = PortfolioData.find((portfolio) => portfolio.id === +id);
-
-  if (!portfolio) notFound();
 
   return (
-    <Flex direction="column" gap="4">
-      <BreadcrumbNav
-        items={[
-          { label: "포트폴리오", href: "/portfolio" },
-          { label: portfolio.title },
-        ]}
-      />
-      <h2 className="text-2xl font-bold">{portfolio.title}</h2>
-      <PortfolioInfoBox portfolio={portfolio} />
-      <div>{portfolio.description}</div>
-    </Flex>
+    <Suspense fallback={<PortfolioDetailSkeleton />}>
+      <PortfolioDetailContent id={+id} />
+    </Suspense>
   );
 }
