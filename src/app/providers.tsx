@@ -8,7 +8,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
-      <Theme>{children}</Theme>
+      <Theme className="flex flex-col flex-1">{children}</Theme>
     </QueryClientProvider>
   );
 }
