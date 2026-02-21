@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { supabaseFrom } from "@/shared/lib/supabase/client";
 import { Portfolio } from "@/shared/model/portfolio";
 import dayjs from "dayjs";
@@ -23,7 +23,7 @@ async function getPortfolioList(): Promise<Portfolio[]> {
 }
 
 export default function useGetPortfolioList() {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ["portfolio", "list"],
     queryFn: getPortfolioList,
   });
