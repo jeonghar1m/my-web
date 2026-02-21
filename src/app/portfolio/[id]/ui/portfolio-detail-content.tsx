@@ -4,8 +4,8 @@ import { Flex } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import { BreadcrumbNav } from "@/shared/ui/breadcrumb";
 import useGetPortfolio from "@/shared/lib/api/portfolio/use-get-portfolio";
-import PortfolioInfoBox from "./portfolio-info-box";
 import { MarkdownRenderer } from "@/shared/ui/markdown";
+import PortfolioInfoBox from "./portfolio-info-box";
 
 export default function PortfolioDetailContent({ id }: { id: number }) {
   const { data: portfolio, isError } = useGetPortfolio(id);
