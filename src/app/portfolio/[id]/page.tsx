@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import PortfolioDetailContent from "./portfolio-detail-content";
-import PortfolioDetailSkeleton from "./portfolio-detail-skeleton";
+import PortfolioDetailContent from "./ui/portfolio-detail-content";
+import PortfolioDetailSkeleton from "./ui/portfolio-detail-skeleton";
 
 export default async function PortfolioDetailPage({
   params,
