@@ -16,7 +16,7 @@
 ## Coding Style & Naming Conventions
 - Language: TypeScript (strict mode).
 - Components use PascalCase (e.g., `PortfolioCard.tsx`); utilities use camelCase (e.g., `utils.ts`).
-- Prefer Next.js server components by default; add `"use client"` only when needed.
+- Prefer Next.js server components by default; add "use client" only when needed.
 - Styling uses Tailwind CSS v4 utilities and CSS variables in `src/app/globals.css`.
 
 ## Testing Guidelines
@@ -24,7 +24,7 @@
 - If adding tests, introduce a framework and document the new `npm run test` command here.
 
 ## Commit & Pull Request Guidelines
-- Commits follow a simple prefix convention seen in history: `feat:`, `fix:`, `refact:` (short, imperative).
+- Commits follow a simple prefix convention seen in history: `feat:`, `fix:`, `refact:`, `chore:`, `docs:` (short, imperative).
 - PRs should include:
   - A concise summary of changes and rationale.
   - Linked issue/ticket when applicable.
