@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import PortfolioDetailContent from "./ui/portfolio-detail-content";
 import PortfolioDetailSkeleton from "./ui/portfolio-detail-skeleton";
 
+export const dynamic = "force-dynamic";
+
 export default async function PortfolioDetailPage({
   params,
 }: {
