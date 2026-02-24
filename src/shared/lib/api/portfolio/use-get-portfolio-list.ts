@@ -1,16 +1,16 @@
 "use client";
 
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { supabaseFrom } from "@/shared/lib/supabase/client";
 import { Portfolio } from "@/shared/model/portfolio";
+import { getApiBaseUrl } from "@/shared/lib/utils/common";
 import dayjs from "dayjs";
 
 async function getPortfolioList(): Promise<Portfolio[]> {
-  const rows = await supabaseFrom<Portfolio[]>((client) =>
-    client.from("portfolio").select("*").order("id"),
-  );
+  const res = await fetch(`${getApiBaseUrl()}/api/portfolio`);
+  if (!res.ok) throw new Error("Failed to fetch portfolio list");
+  const rows = await res.json();
 
-  return rows.map((item) => ({
+  return rows.map((item: Portfolio & { startDate?: string; endDate?: string }) => ({
     id: item.id,
     title: item.title,
     thumbnailUrl: item.thumbnailUrl ?? undefined,

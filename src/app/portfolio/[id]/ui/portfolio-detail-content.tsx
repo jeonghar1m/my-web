@@ -3,7 +3,7 @@
 import { Flex } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import { BreadcrumbNav } from "@/shared/ui/breadcrumb";
-import useGetPortfolio from "@/shared/lib/api/portfolio/use-get-portfolio";
+import { useGetPortfolio } from "@/shared/lib/api/portfolio";
 import { MarkdownRenderer } from "@/shared/ui/markdown";
 import PortfolioInfoBox from "./portfolio-info-box";
 
