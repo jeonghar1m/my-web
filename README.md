@@ -57,9 +57,9 @@ cp .env.example .env.local
 
 | 변수명 | 설명 |
 |---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase 프로젝트 URL |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | Supabase anon(publishable) key |
-| `APP_BASE_URL` | 배포된 앱 기본 URL (예: `https://example.com`) |
+| `SUPABASE_URL` | Supabase 프로젝트 URL (서버 전용) |
+| `SUPABASE_ANON_KEY` | Supabase anon(publishable) key (서버 전용) |
+| `APP_BASE_URL` | 앱 기본 URL, 프로토콜 제외 (예: `localhost:3000`, `example.com`) |
 | `CRON_SECRET` | `/api/cron/ping` 보호용 Bearer 토큰 |
 
 4. 개발 서버 실행
