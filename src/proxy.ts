@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 // 하드코딩 fallback 없음 — 미설정 시 fail-closed
 const ALLOWED_ORIGIN = process.env.APP_BASE_URL ?? null;
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const origin = request.headers.get("origin");
 
   // Origin 헤더 없음 = 브라우저 동일출처 요청 또는 서버사이드 클라이언트
