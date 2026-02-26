@@ -1,5 +1,5 @@
 import { Flex } from "@radix-ui/themes";
-import CareerList from "./career-list";
+import CareerSection from "./career-section";
 import PortfolioSection from "./portfolio-section";
 
 export default function HomePage() {
@@ -13,7 +13,7 @@ export default function HomePage() {
         <h2 className="text-2xl font-bold mb-6">포트폴리오</h2>
         <PortfolioSection />
       </section>
-      <CareerList />
+      <CareerSection />
     </Flex>
   );
 }
