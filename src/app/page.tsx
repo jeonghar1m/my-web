@@ -1,8 +1,12 @@
 import { Flex } from "@radix-ui/themes";
-import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import CareerList from "./career-list";
-import PortfolioPageContent from "./portfolio/page-content";
 import PortfolioListSkeleton from "./portfolio/portfolio-list-skeleton";
+
+const PortfolioPageContent = dynamic(() => import("./portfolio/page-content"), {
+  ssr: false,
+  loading: () => <PortfolioListSkeleton />,
+});
 
 export default function HomePage() {
   return (
@@ -14,9 +18,7 @@ export default function HomePage() {
       <CareerList />
       <section className="mt-12">
         <h2 className="text-2xl font-bold mb-6">포트폴리오</h2>
-        <Suspense fallback={<PortfolioListSkeleton />}>
-          <PortfolioPageContent />
-        </Suspense>
+        <PortfolioPageContent />
       </section>
     </Flex>
   );
