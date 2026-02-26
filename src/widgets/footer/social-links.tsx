@@ -1,4 +1,4 @@
-import { SiInstagram, SiGithub, SiLinkedin } from "react-icons/si";
+import { SiInstagram, SiGithub, SiLinkedin, SiVelog } from "react-icons/si";
 import { Mail } from "lucide-react";
 
 const SOCIAL_LINKS = [
@@ -13,6 +13,7 @@ const SOCIAL_LINKS = [
     href: "https://www.linkedin.com/in/jeongharim/",
     label: "LinkedIn",
   },
+  { icon: SiVelog, href: "https://velog.io/@jeonghar1m/posts", label: "Velog" },
   { icon: Mail, href: "mailto:me@jeongharim.com", label: "Email" },
 ];
 
