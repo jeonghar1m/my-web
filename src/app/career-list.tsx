@@ -32,7 +32,7 @@ export default function CareerList() {
   return (
     <section className="mt-12 w-full">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold">경력</h3>
+        <h2 className="text-2xl font-bold">경력</h2>
         <button
           onClick={() =>
             setSortOrder((prev) => (prev === "latest" ? "oldest" : "latest"))
