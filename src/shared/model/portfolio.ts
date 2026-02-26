@@ -1,7 +1,7 @@
 import { Dayjs } from "dayjs";
+import { CommonModel } from "./common";
 
-export interface Portfolio {
-  id: number;
+export interface Portfolio extends CommonModel {
   title: string;
   thumbnailUrl?: string;
   githubUrl?: string;
