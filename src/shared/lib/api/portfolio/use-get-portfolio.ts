@@ -16,7 +16,7 @@ async function getPortfolio(id: number): Promise<Portfolio> {
     thumbnailUrl: row.thumbnailUrl ?? undefined,
     githubUrl: row.githubUrl ?? undefined,
     productionUrl: row.productionUrl ?? undefined,
-    startDate: row.startDate ? dayjs(row.startDate) : undefined,
+    startDate: dayjs(row.startDate),
     endDate: row.endDate ? dayjs(row.endDate) : undefined,
     description: row.description ?? "",
   };

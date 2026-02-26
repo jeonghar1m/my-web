@@ -4,7 +4,7 @@ import { Flex, Section } from "@radix-ui/themes";
 import PortfolioInfoBoxContent from "./portfolio-info-box-content";
 
 interface PortfolioInfoBoxProps {
-  portfolio?: Portfolio;
+  portfolio: Portfolio;
 }
 
 export default function PortfolioInfoBox({ portfolio }: PortfolioInfoBoxProps) {
@@ -14,12 +14,20 @@ export default function PortfolioInfoBox({ portfolio }: PortfolioInfoBoxProps) {
     <Section size="1" className="rounded-lg bg-gray-100 p-5">
       <Flex direction="column" gap="2">
         {githubUrl && (
-          <PortfolioInfoBoxContent title="Github URL" type="link" content={githubUrl} />
+          <PortfolioInfoBoxContent
+            title="Github URL"
+            type="link"
+            content={githubUrl}
+          />
         )}
         {productionUrl && (
-          <PortfolioInfoBoxContent title="배포 URL" type="link" content={productionUrl} />
+          <PortfolioInfoBoxContent
+            title="배포 URL"
+            type="link"
+            content={productionUrl}
+          />
         )}
-        {startDate && endDate && (
+        {endDate && (
           <PortfolioInfoBoxContent
             title="진행기간"
             type="text"

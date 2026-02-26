@@ -7,7 +7,7 @@ export interface Portfolio {
   githubUrl?: string;
   /** NOTE: 배포된 사이트 Url */
   productionUrl?: string;
-  startDate?: Dayjs;
+  startDate: Dayjs;
   endDate?: Dayjs;
   description: string;
 }
