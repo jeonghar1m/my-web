@@ -1,8 +1,6 @@
 import Link from "next/link";
 
 const NAV_ITEMS = [
-  { label: "About", href: "/" },
-  { label: "포트폴리오", href: "/portfolio" },
   {
     label: "블로그",
     href: "https://velog.io/@jeonghar1m/posts",
