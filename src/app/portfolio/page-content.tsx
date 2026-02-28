@@ -1,10 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useGetPortfolioList } from "@/shared/lib/api/portfolio";
+import { SortOrderButton, useSortOrder } from "@/shared/ui/sort-order-button";
 import PortfolioCard from "./portfolio-card";
-
-type SortOrder = "latest" | "oldest";
 
 interface PortfolioPageContentProps {
   visibleOrderButton?: boolean;
@@ -14,7 +13,7 @@ export default function PortfolioPageContent({
   visibleOrderButton = false,
 }: PortfolioPageContentProps) {
   const { data: portfolios } = useGetPortfolioList();
-  const [sortOrder, setSortOrder] = useState<SortOrder>("oldest");
+  const { sortOrder, toggle } = useSortOrder();
 
   const sortedPortfolios = useMemo(() => {
     return [...(portfolios ?? [])].sort((a, b) => {
@@ -29,14 +28,7 @@ export default function PortfolioPageContent({
     <section className="mt-12 w-full">
       {visibleOrderButton && (
         <div className="flex justify-end mb-2">
-          <button
-            onClick={() =>
-              setSortOrder((prev) => (prev === "latest" ? "oldest" : "latest"))
-            }
-            className="cursor-pointer text-sm text-neutral-500 transition-colors hover:text-neutral-900"
-          >
-            {sortOrder === "latest" ? "최신순 ↓" : "과거순 ↑"}
-          </button>
+          <SortOrderButton sortOrder={sortOrder} onToggle={toggle} />
         </div>
       )}
       <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
