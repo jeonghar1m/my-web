@@ -1,15 +1,20 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
 import { useGetCareerList } from "@/shared/lib/api/career";
 import { YEAR_MONTH_FORMAT } from "@/shared/constants/date";
+import { SortOrderButton, useSortOrder } from "@/shared/ui/sort-order-button";
 
-type SortOrder = "latest" | "oldest";
+interface CareerPageContentProps {
+  visibleOrderButton?: boolean;
+}
 
-export default function CareerPageContent() {
+export default function CareerPageContent({
+  visibleOrderButton = false,
+}: CareerPageContentProps) {
   const { data: careers } = useGetCareerList();
-  const [sortOrder, setSortOrder] = useState<SortOrder>("latest");
+  const { sortOrder, toggle } = useSortOrder();
 
   const sortedCareers = useMemo(() => {
     return [...careers].sort((a, b) => {
@@ -24,14 +29,9 @@ export default function CareerPageContent() {
     <section className="mt-12 w-full">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold">경력</h2>
-        <button
-          onClick={() =>
-            setSortOrder((prev) => (prev === "latest" ? "oldest" : "latest"))
-          }
-          className="cursor-pointer text-sm text-neutral-500 transition-colors hover:text-neutral-900"
-        >
-          {sortOrder === "latest" ? "최신순 ↓" : "과거순 ↑"}
-        </button>
+        {visibleOrderButton && (
+          <SortOrderButton sortOrder={sortOrder} onToggle={toggle} />
+        )}
       </div>
       <ul className="mt-4 flex flex-col gap-4">
         {sortedCareers.map((career) => (
