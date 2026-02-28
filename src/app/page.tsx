@@ -9,10 +9,7 @@ export default function HomePage() {
       <p className="mt-8 text-center text-neutral-700">
         프론트엔드 개발자 정하림입니다.
       </p>
-      <section className="mt-12">
-        <h2 className="text-2xl font-bold mb-6">포트폴리오</h2>
-        <PortfolioSection />
-      </section>
+      <PortfolioSection />
       <CareerSection />
     </Flex>
   );
