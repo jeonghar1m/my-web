@@ -9,5 +9,5 @@ const PortfolioPageContent = dynamic(() => import("./portfolio/page-content"), {
 });
 
 export default function PortfolioSection() {
-  return <PortfolioPageContent />;
+  return <PortfolioPageContent visibleOrderButton />;
 }

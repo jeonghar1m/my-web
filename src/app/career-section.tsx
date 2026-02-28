@@ -9,5 +9,5 @@ const CareerPageContent = dynamic(() => import("./career/page-content"), {
 });
 
 export default function CareerSection() {
-  return <CareerPageContent />;
+  return <CareerPageContent visibleOrderButton />;
 }
