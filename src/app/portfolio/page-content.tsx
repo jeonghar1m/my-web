@@ -26,11 +26,12 @@ export default function PortfolioPageContent({
 
   return (
     <section className="mt-12 w-full">
-      {visibleOrderButton && (
-        <div className="flex justify-end mb-2">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold">포트폴리오</h2>
+        {visibleOrderButton && (
           <SortOrderButton sortOrder={sortOrder} onToggle={toggle} />
-        </div>
-      )}
+        )}
+      </div>
       <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {sortedPortfolios.map((portfolio) => (
           <PortfolioCard key={portfolio.id} portfolio={portfolio} />
