@@ -15,7 +15,7 @@ function PortfolioCardSkeleton() {
 export default function PortfolioListSkeleton() {
   return (
     <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {Array.from({ length: 6 }).map((_, i) => (
+      {Array.from({ length: 3 }).map((_, i) => (
         <PortfolioCardSkeleton key={i} />
       ))}
     </div>
