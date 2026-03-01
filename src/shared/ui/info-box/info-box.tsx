@@ -1,7 +1,8 @@
 import { Flex, Section } from "@radix-ui/themes";
+import { ReactNode } from "react";
 
 interface InfoBoxProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function InfoBox({ children }: InfoBoxProps) {

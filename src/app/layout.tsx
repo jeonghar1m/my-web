@@ -7,6 +7,7 @@ import Footer from "@/widgets/footer/footer";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ReactNode } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +26,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
+  modal: ReactNode;
 }>) {
   return (
     <html lang="ko">
@@ -39,6 +42,7 @@ export default function RootLayout({
             <div className="max-w-4xl mx-auto">{children}</div>
           </main>
           <Footer />
+          {modal}
         </Providers>
         <Analytics />
         <SpeedInsights />
