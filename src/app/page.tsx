@@ -1,6 +1,6 @@
 import { Flex } from "@radix-ui/themes";
 import CareerSection from "./career-section";
-import PortfolioSection from "./portfolio-section";
+import PortfolioList from "./portfolio/portfolio-list";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
       <p className="mt-8 text-center text-neutral-700">
         프론트엔드 개발자 정하림입니다.
       </p>
-      <PortfolioSection />
+      <PortfolioList visibleOrderButton />
       <CareerSection />
     </Flex>
   );

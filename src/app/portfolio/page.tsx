@@ -1,13 +1,7 @@
-import { Suspense } from "react";
-import PortfolioPageContent from "./page-content";
-import PortfolioListSkeleton from "./portfolio-list-skeleton";
+import PortfolioList from "./portfolio-list";
 
 export const dynamic = "force-dynamic";
 
 export default function PortfolioPage() {
-  return (
-    <Suspense fallback={<PortfolioListSkeleton />}>
-      <PortfolioPageContent />
-    </Suspense>
-  );
+  return <PortfolioList />;
 }
