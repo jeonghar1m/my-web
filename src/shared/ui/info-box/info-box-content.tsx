@@ -1,6 +1,6 @@
 import { Flex, Text } from "@radix-ui/themes";
 
-export interface InfoBoxContentProps {
+interface InfoBoxContentProps {
   title: string;
   type: "link" | "text";
   content: string;
