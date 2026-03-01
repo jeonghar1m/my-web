@@ -1,16 +1,16 @@
 import { Flex, Text } from "@radix-ui/themes";
 
-interface PortfolioInfoBoxContentProps {
+interface InfoBoxContentProps {
   title: string;
   type: "link" | "text";
   content: string;
 }
 
-export default function PortfolioInfoBoxContent({
+export default function InfoBoxContent({
   title,
   type,
   content,
-}: PortfolioInfoBoxContentProps) {
+}: InfoBoxContentProps) {
   return (
     <Flex align="center" gap="2">
       <h3 className="text-lg font-semibold">{title}</h3>
