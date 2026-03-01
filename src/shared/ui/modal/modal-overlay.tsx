@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useCallback, useEffect } from "react";
+import { ReactNode, Suspense, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import { cn } from "@/shared/lib/utils/common";
@@ -86,7 +86,11 @@ export default function ModalOverlay({ children, header }: ModalOverlayProps) {
         onClickCapture={handleLinkCapture}
       >
         <div className="flex flex-none items-center gap-2 px-6 py-4">
-          {header && <div className="min-w-0 flex-1">{header}</div>}
+          {header && (
+            <div className="min-w-0 flex-1">
+              <Suspense fallback={null}>{header}</Suspense>
+            </div>
+          )}
           <button
             onClick={handleClose}
             className={cn(

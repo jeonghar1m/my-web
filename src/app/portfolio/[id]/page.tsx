@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import PortfolioDetailView from "./_components/portfolio-detail-view";
 import PortfolioDetailHeader from "./_components/portfolio-detail-header";
 
@@ -12,7 +13,9 @@ export default async function PortfolioDetailPage({
 
   return (
     <>
-      <PortfolioDetailHeader id={+id} />
+      <Suspense fallback={null}>
+        <PortfolioDetailHeader id={+id} />
+      </Suspense>
       <PortfolioDetailView id={+id} />
     </>
   );
