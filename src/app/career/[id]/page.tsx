@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import CareerDetailView from "./_components/career-detail-view";
 import CareerDetailHeader from "./_components/career-detail-header";
 
@@ -12,7 +13,9 @@ export default async function CareerDetailPage({
 
   return (
     <>
-      <CareerDetailHeader id={+id} />
+      <Suspense fallback={null}>
+        <CareerDetailHeader id={+id} />
+      </Suspense>
       <CareerDetailView id={+id} />
     </>
   );
