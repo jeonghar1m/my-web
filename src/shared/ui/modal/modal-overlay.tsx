@@ -69,15 +69,17 @@ export default function ModalOverlay({ children, header }: ModalOverlayProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 sm:items-center"
       onClick={handleClose}
       aria-modal="true"
       role="dialog"
     >
       <div
         className={cn(
-          "flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden",
-          "rounded-2xl bg-white shadow-2xl",
+          "flex w-full flex-col overflow-hidden",
+          "max-h-[85dvh] sm:max-w-3xl sm:max-h-[90dvh]",
+          "rounded-t-2xl sm:rounded-2xl",
+          "bg-white shadow-2xl",
           "dark:bg-neutral-900",
         )}
         onClick={(e) => e.stopPropagation()}
