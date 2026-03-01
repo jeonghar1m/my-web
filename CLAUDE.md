@@ -51,6 +51,15 @@ Root layout (`src/app/layout.tsx`) wraps all pages with Header/Footer and Geist 
 - Responsive: mobile-first with `sm:` / `lg:` breakpoints
 - shadcn components added via `npx shadcn@latest add <component>`
 
+## Git Commit Author
+
+커밋 시 항상 아래 author 정보를 사용할 것:
+
+- **Name**: Jeong Harim
+- **Email**: me@jeongharim.com
+
+예시: `git commit --author="Jeong Harim <me@jeongharim.com>" ...`
+
 ## Key Patterns
 
 - Korean language content throughout the site
