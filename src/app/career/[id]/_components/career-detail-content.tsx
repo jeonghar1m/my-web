@@ -2,7 +2,6 @@
 
 import { Flex } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
-import { BreadcrumbNav } from "@/shared/ui/breadcrumb";
 import { useGetCareer } from "@/shared/lib/api/career";
 import { MarkdownRenderer } from "@/shared/ui/markdown";
 import CareerInfoBox from "./career-info-box";
@@ -14,12 +13,6 @@ export default function CareerDetailContent({ id }: { id: number }) {
 
   return (
     <Flex direction="column" gap="4">
-      <BreadcrumbNav
-        items={[
-          { label: "경력", href: "/career" },
-          { label: career?.title || "" },
-        ]}
-      />
       <h2 className="text-2xl font-bold">{career?.title}</h2>
       <CareerInfoBox career={career} />
       <MarkdownRenderer content={career?.description || ""} />

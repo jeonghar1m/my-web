@@ -1,4 +1,5 @@
 import PortfolioDetailView from "./_components/portfolio-detail-view";
+import PortfolioDetailHeader from "./_components/portfolio-detail-header";
 
 export const dynamic = "force-dynamic";
 
@@ -9,5 +10,10 @@ export default async function PortfolioDetailPage({
 }) {
   const { id } = await params;
 
-  return <PortfolioDetailView id={+id} />;
+  return (
+    <>
+      <PortfolioDetailHeader id={+id} />
+      <PortfolioDetailView id={+id} />
+    </>
+  );
 }
