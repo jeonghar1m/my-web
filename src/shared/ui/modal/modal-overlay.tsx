@@ -7,9 +7,10 @@ import { cn } from "@/shared/lib/utils/common";
 
 interface ModalOverlayProps {
   children: ReactNode;
+  header?: ReactNode;
 }
 
-export default function ModalOverlay({ children }: ModalOverlayProps) {
+export default function ModalOverlay({ children, header }: ModalOverlayProps) {
   const router = useRouter();
 
   const handleClose = useCallback(() => {
@@ -75,26 +76,31 @@ export default function ModalOverlay({ children }: ModalOverlayProps) {
     >
       <div
         className={cn(
-          "relative max-h-[90vh] w-full max-w-3xl overflow-y-auto",
-          "rounded-2xl bg-white p-8 shadow-2xl",
+          "flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden",
+          "rounded-2xl bg-white shadow-2xl",
           "dark:bg-neutral-900",
         )}
         onClick={(e) => e.stopPropagation()}
         onClickCapture={handleLinkCapture}
       >
-        <button
-          onClick={handleClose}
-          className={cn(
-            "absolute right-4 top-4 cursor-pointer rounded-full p-2",
-            "text-neutral-400 transition-colors",
-            "hover:bg-neutral-100 hover:text-neutral-900",
-            "dark:hover:bg-neutral-800 dark:hover:text-neutral-100",
-          )}
-          aria-label="닫기"
-        >
-          <X size={20} />
-        </button>
-        {children}
+        <div className="flex flex-none items-center gap-2 px-6 py-4">
+          {header && <div className="min-w-0 flex-1">{header}</div>}
+          <button
+            onClick={handleClose}
+            className={cn(
+              "ml-auto cursor-pointer rounded-full p-2",
+              "text-neutral-400 transition-colors",
+              "hover:bg-neutral-100 hover:text-neutral-900",
+              "dark:hover:bg-neutral-800 dark:hover:text-neutral-100",
+            )}
+            aria-label="닫기"
+          >
+            <X size={20} />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto px-8 pb-8">
+          {children}
+        </div>
       </div>
     </div>
   );

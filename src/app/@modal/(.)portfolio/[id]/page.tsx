@@ -1,5 +1,6 @@
 import { ModalOverlay } from "@/shared/ui/modal";
 import PortfolioDetailView from "@/app/portfolio/[id]/_components/portfolio-detail-view";
+import PortfolioDetailHeader from "@/app/portfolio/[id]/_components/portfolio-detail-header";
 
 export default async function PortfolioModalPage({
   params,
@@ -9,7 +10,7 @@ export default async function PortfolioModalPage({
   const { id } = await params;
 
   return (
-    <ModalOverlay>
+    <ModalOverlay header={<PortfolioDetailHeader id={+id} />}>
       <PortfolioDetailView id={+id} />
     </ModalOverlay>
   );
