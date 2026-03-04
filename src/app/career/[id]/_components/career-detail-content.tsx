@@ -1,6 +1,5 @@
 "use client";
 
-import { Flex } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import { useGetCareer } from "@/shared/lib/api/career";
 import { MarkdownRenderer } from "@/shared/ui/markdown";
@@ -12,10 +11,10 @@ export default function CareerDetailContent({ id }: { id: number }) {
   if (isError) notFound();
 
   return (
-    <Flex direction="column" gap="4">
+    <div className="flex flex-col gap-4">
       <h2 className="text-2xl font-bold">{career?.title}</h2>
       <CareerInfoBox career={career} />
       <MarkdownRenderer content={career?.description || ""} />
-    </Flex>
+    </div>
   );
 }
