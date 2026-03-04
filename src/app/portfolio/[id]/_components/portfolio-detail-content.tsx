@@ -1,6 +1,5 @@
 "use client";
 
-import { Flex } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import { useGetPortfolio } from "@/shared/lib/api/portfolio";
 import { MarkdownRenderer } from "@/shared/ui/markdown";
@@ -12,10 +11,10 @@ export default function PortfolioDetailContent({ id }: { id: number }) {
   if (isError) notFound();
 
   return (
-    <Flex direction="column" gap="4">
+    <div className="flex flex-col gap-4">
       <h2 className="text-2xl font-bold">{portfolio?.title}</h2>
       <PortfolioInfoBox portfolio={portfolio} />
       <MarkdownRenderer content={portfolio?.description || ""} />
-    </Flex>
+    </div>
   );
 }
