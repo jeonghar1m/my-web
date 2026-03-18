@@ -18,7 +18,7 @@ export default function PortfolioList({
   const { sortOrder, toggle } = useSortOrder();
 
   return (
-    <section className="mt-12 w-full">
+    <section className="w-full">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold">포트폴리오</h2>
         {visibleOrderButton && (
