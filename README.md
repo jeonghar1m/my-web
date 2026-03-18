@@ -10,6 +10,8 @@ Next.js App Router 기반 개인 포트폴리오 웹사이트입니다.
 - **Tailwind CSS v4**
 - **Radix UI** + **shadcn/ui**
 - **Supabase** (`@supabase/supabase-js`)
+- **TanStack Query v5**
+- **react-markdown**
 - **dayjs**
 
 ## 프로젝트 구조
@@ -18,8 +20,12 @@ Next.js App Router 기반 개인 포트폴리오 웹사이트입니다.
 src/
 ├── app/              # 라우트, 페이지, API route
 ├── shared/
-│   ├── ui/           # 재사용 UI
-│   ├── lib/          # 유틸/데이터 접근(Supabase 등)
+│   ├── ui/           # 재사용 UI 컴포넌트
+│   ├── lib/
+│   │   ├── api/      # TanStack Query 훅 (career, portfolio)
+│   │   ├── supabase/ # Supabase 클라이언트 (server/client)
+│   │   └── utils/    # 공통 유틸리티
+│   ├── constants/    # 상수 정의
 │   └── model/        # 도메인 타입
 └── widgets/          # 레이아웃 컴포넌트(Header, Footer)
 public/
@@ -31,8 +37,20 @@ public/
 | 경로 | 설명 |
 |------|------|
 | `/` | 홈 (경력 섹션 포함) |
+| `/career` | 경력 목록 |
+| `/career/[id]` | 경력 상세 |
 | `/portfolio` | 포트폴리오 목록 |
 | `/portfolio/[id]` | 포트폴리오 상세 |
+
+## API 라우트
+
+| 경로 | 설명 |
+|------|------|
+| `/api/career` | 경력 목록 조회 |
+| `/api/career/[id]` | 경력 단건 조회 |
+| `/api/portfolio` | 포트폴리오 목록 조회 |
+| `/api/portfolio/[id]` | 포트폴리오 단건 조회 |
+| `/api/cron/ping` | Supabase keepalive (Bearer 토큰 인증) |
 
 ## 사전 요구사항
 

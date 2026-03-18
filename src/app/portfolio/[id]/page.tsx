@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import PortfolioDetailContent from "./ui/portfolio-detail-content";
-import PortfolioDetailSkeleton from "./ui/portfolio-detail-skeleton";
+import PortfolioDetailView from "./_components/portfolio-detail-view";
+import PortfolioDetailHeader from "./_components/portfolio-detail-header";
 
 export const dynamic = "force-dynamic";
 
@@ -12,8 +12,11 @@ export default async function PortfolioDetailPage({
   const { id } = await params;
 
   return (
-    <Suspense fallback={<PortfolioDetailSkeleton />}>
-      <PortfolioDetailContent id={+id} />
-    </Suspense>
+    <>
+      <Suspense fallback={null}>
+        <PortfolioDetailHeader id={+id} />
+      </Suspense>
+      <PortfolioDetailView id={+id} />
+    </>
   );
 }

@@ -10,13 +10,13 @@ async function getPortfolioList(): Promise<Portfolio[]> {
   if (!res.ok) throw new Error("Failed to fetch portfolio list");
   const rows = await res.json();
 
-  return rows.map((item: Portfolio & { startDate?: string; endDate?: string }) => ({
+  return rows.map((item: Portfolio & { startDate: string; endDate?: string }) => ({
     id: item.id,
     title: item.title,
     thumbnailUrl: item.thumbnailUrl ?? undefined,
     githubUrl: item.githubUrl ?? undefined,
     productionUrl: item.productionUrl ?? undefined,
-    startDate: item.startDate ? dayjs(item.startDate) : undefined,
+    startDate: dayjs(item.startDate),
     endDate: item.endDate ? dayjs(item.endDate) : undefined,
     description: item.description ?? "",
   }));
