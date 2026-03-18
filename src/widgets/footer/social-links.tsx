@@ -14,7 +14,7 @@ const SOCIAL_LINKS = [
     label: "LinkedIn",
   },
   { icon: SiVelog, href: "https://velog.io/@jeonghar1m/posts", label: "Velog" },
-  { icon: Mail, href: "mailto:me@jeongharim.com", label: "Email" },
+  { icon: Mail, href: "mailto:me@jeongharim.dev", label: "Email" },
 ];
 
 export default function SocialLinks() {
