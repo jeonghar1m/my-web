@@ -18,7 +18,7 @@ export default function CareerList({
   const { sortOrder, toggle } = useSortOrder();
 
   return (
-    <section className="mt-12 w-full">
+    <section className="w-full">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold">경력</h2>
         {visibleOrderButton && (
