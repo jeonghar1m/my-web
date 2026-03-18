@@ -20,9 +20,11 @@ export default function HomePage() {
       </section>
 
       {/* 포트폴리오 미리보기 */}
-      <PortfolioList limit={3} />
+      <div className="mt-12">
+        <PortfolioList limit={3} />
+      </div>
 
-      <hr className="mt-12 border-neutral-200" />
+      <hr className="my-12 border-neutral-200" />
 
       {/* 경력 미리보기 */}
       <CareerSection limit={3} />
