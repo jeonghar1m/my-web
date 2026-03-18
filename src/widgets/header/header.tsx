@@ -8,7 +8,7 @@ export default async function Header() {
         <Link href="/">
           <h1 className="text-3xl font-bold">정하림</h1>
         </Link>
-        <p className="text-neutral-400 text-sm mt-1">디자인이 안떠올라요...</p>
+        <p className="text-neutral-400 text-sm mt-1">Frontend Developer</p>
         <Nav />
       </div>
     </header>

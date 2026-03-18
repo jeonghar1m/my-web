@@ -4,13 +4,16 @@ import { SortOrderButton, useSortOrder } from "@/shared/ui/sort-order-button";
 import PortfolioCards from "./portfolio-cards";
 import { Suspense } from "react";
 import PortfolioListSkeleton from "./_components/portfolio-list-skeleton";
+import Link from "next/link";
 
 interface PortfolioPageContentProps {
   visibleOrderButton?: boolean;
+  limit?: number;
 }
 
 export default function PortfolioList({
   visibleOrderButton = false,
+  limit,
 }: PortfolioPageContentProps) {
   const { sortOrder, toggle } = useSortOrder();
 
@@ -23,8 +26,18 @@ export default function PortfolioList({
         )}
       </div>
       <Suspense fallback={<PortfolioListSkeleton />}>
-        <PortfolioCards sortOrder={sortOrder} />
+        <PortfolioCards sortOrder={sortOrder} limit={limit} />
       </Suspense>
+      {limit && (
+        <div className="mt-6 text-center">
+          <Link
+            href="/portfolio"
+            className="text-sm text-neutral-500 hover:text-neutral-800 transition-colors"
+          >
+            전체 보기 →
+          </Link>
+        </div>
+      )}
     </section>
   );
 }
