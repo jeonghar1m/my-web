@@ -20,7 +20,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "정하림",
+  title: {
+    template: "%s | 정하림",
+    default: "정하림",
+  },
   description: "프론트엔드 개발자 정하림의 포트폴리오 웹사이트",
 };
 
