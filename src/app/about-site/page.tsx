@@ -64,9 +64,6 @@ export default function AboutSitePage() {
         <h1 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">
           About site
         </h1>
-        <p className="text-lg text-neutral-500 dark:text-neutral-400 mb-6">
-          이 사이트에 대하여
-        </p>
       </section>
 
       <hr className="border-neutral-200 dark:border-neutral-700 mb-12" />
