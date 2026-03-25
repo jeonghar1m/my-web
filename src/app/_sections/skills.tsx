@@ -8,7 +8,10 @@ import {
   SiCss3,
   SiNextdotjs,
   SiReact,
+  SiReactquery,
   SiTailwindcss,
+  SiRadixui,
+  SiAntdesign,
   SiStyledcomponents,
   SiGithub,
   SiFigma,
@@ -61,11 +64,32 @@ const SKILLS: TechItem[] = [
     Icon: SiReact,
   },
   {
+    category: "Library",
+    name: "TanStack Query",
+    description: "",
+    url: "https://tanstack.com/query",
+    Icon: SiReactquery,
+  },
+  {
     category: "Styling",
     name: "Tailwind CSS",
     description: "",
     url: "https://tailwindcss.com",
     Icon: SiTailwindcss,
+  },
+  {
+    category: "Styling",
+    name: "Radix UI",
+    description: "",
+    url: "https://www.radix-ui.com",
+    Icon: SiRadixui,
+  },
+  {
+    category: "Styling",
+    name: "Ant Design",
+    description: "",
+    url: "https://ant.design",
+    Icon: SiAntdesign,
   },
   {
     category: "Styling",
@@ -97,7 +121,7 @@ const SKILLS: TechItem[] = [
   },
 ];
 
-const CATEGORIES = ["Language", "Framework", "Styling", "Tools"] as const;
+const CATEGORIES = ["Language", "Framework", "Library", "Styling", "Tools"] as const;
 
 export default function Skills() {
   const [selectedSkill, setSelectedSkill] = useState<TechItem | null>(null);

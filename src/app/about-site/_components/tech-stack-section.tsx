@@ -5,6 +5,7 @@ import { Component, Layers } from "lucide-react";
 import {
   SiNextdotjs,
   SiReact,
+  SiReactquery,
   SiTailwindcss,
   SiVercel,
   SiSupabase,
@@ -16,57 +17,62 @@ const TECH_STACK: TechItem[] = [
   {
     category: "Framework",
     name: "Next.js 16",
-    description: "App Router 기반 풀스택 React 프레임워크",
+    description: "사이트 전체의 기반 프레임워크. App Router로 포트폴리오·커리어 동적 라우트를 구성하고, 병렬 라우트(@modal)로 URL 기반 모달을 구현",
     url: "https://nextjs.org",
     Icon: SiNextdotjs,
   },
   {
     category: "Framework",
     name: "React 19",
-    description: "UI 구성을 위한 컴포넌트 기반 라이브러리",
+    description: "서버 컴포넌트를 기본으로 사용하고, 상호작용이 필요한 부분에만 'use client'를 적용해 클라이언트 번들을 최소화",
     url: "https://react.dev",
     Icon: SiReact,
   },
   {
+    category: "Library",
+    name: "TanStack Query",
+    description: "포트폴리오·커리어 목록과 상세 데이터를 클라이언트에서 패칭하고 캐싱. API Route와 연동해 Supabase 데이터를 가져오는 데 사용",
+    url: "https://tanstack.com/query",
+    Icon: SiReactquery,
+  },
+  {
     category: "Styling",
     name: "Tailwind CSS v4",
-    description:
-      'PostCSS 플러그인 방식, OKLCH 색상 토큰 사용. @import "tailwindcss" 문법',
+    description: "모든 UI 스타일링에 사용. OKLCH 색상 토큰으로 테마를 정의하고, @custom-variant로 다크모드를 구현",
     url: "https://tailwindcss.com",
     Icon: SiTailwindcss,
   },
   {
     category: "Styling",
     name: "Radix UI",
-    description: "접근성 중심의 헤드리스 UI 프리미티브 (Themes + Primitives)",
+    description: "레이아웃에 Themes를, Slot·Tooltip 등 접근성 있는 인터랙션 구현에 Primitives를 활용",
     url: "https://www.radix-ui.com",
     Icon: Layers,
   },
   {
     category: "Styling",
     name: "shadcn/ui",
-    description: "new-york 스타일, RSC 지원 컴포넌트 모음",
+    description: "Breadcrumb, 정렬 버튼 등 반복 사용되는 UI 컴포넌트를 직접 소유·수정할 수 있는 형태로 도입",
     url: "https://ui.shadcn.com",
     Icon: Component,
   },
   {
     category: "Infrastructure",
     name: "Vercel",
-    description: "Next.js 최적화 배포 플랫폼. Analytics & Speed Insights 연동",
+    description: "사이트 배포 및 호스팅 플랫폼. Analytics와 Speed Insights를 연동해 실사용 기준 성능을 모니터링",
     url: "https://vercel.com",
     Icon: SiVercel,
   },
   {
     category: "Infrastructure",
     name: "Supabase",
-    description:
-      "PostgreSQL 기반 오픈소스 BaaS. 데이터베이스, 인증, 스토리지, Edge Functions 등을 제공",
+    description: "포트폴리오·커리어 데이터를 저장하고 조회하는 백엔드. API Route에서 서버 클라이언트로 접근하고, cron으로 인스턴스를 주기적으로 활성화",
     url: "https://supabase.com",
     Icon: SiSupabase,
   },
 ];
 
-const CATEGORIES = ["Framework", "Styling", "Infrastructure"] as const;
+const CATEGORIES = ["Framework", "Library", "Styling", "Infrastructure"] as const;
 
 export default function TechStackSection() {
   const [selectedTech, setSelectedTech] = useState<TechItem | null>(null);
