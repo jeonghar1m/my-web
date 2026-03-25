@@ -8,7 +8,9 @@ export default async function Header() {
         <Link href="/">
           <h1 className="text-3xl font-bold">정하림</h1>
         </Link>
-        <p className="text-neutral-400 text-sm mt-1">Frontend Developer</p>
+        <p className="text-neutral-400 text-sm mt-1">
+          Designed by Harim in Seoul
+        </p>
         <Nav />
       </div>
     </header>

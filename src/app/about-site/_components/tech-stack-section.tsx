@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Component } from "lucide-react";
 import {
   SiNextdotjs,
   SiReact,
