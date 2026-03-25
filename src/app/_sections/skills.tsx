@@ -1,41 +1,143 @@
-const SKILLS = [
-  { category: "Language", items: ["TypeScript", "JavaScript", "HTML", "CSS"] },
-  { category: "Framework", items: ["Next.js", "React"] },
+"use client";
+
+import { useState } from "react";
+import {
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiNextdotjs,
+  SiReact,
+  SiTailwindcss,
+  SiStyledcomponents,
+  SiGithub,
+  SiFigma,
+  SiVercel,
+} from "react-icons/si";
+import { TechIconButton } from "@/shared/ui/tech-icon-button";
+import { TechDetailModal, type TechItem } from "@/shared/ui/tech-detail-modal";
+
+const SKILLS: TechItem[] = [
+  {
+    category: "Language",
+    name: "TypeScript",
+    description: "",
+    url: "https://www.typescriptlang.org",
+    Icon: SiTypescript,
+  },
+  {
+    category: "Language",
+    name: "JavaScript",
+    description: "",
+    url: "https://developer.mozilla.org/ko/docs/Web/JavaScript",
+    Icon: SiJavascript,
+  },
+  {
+    category: "Language",
+    name: "HTML",
+    description: "",
+    url: "https://developer.mozilla.org/ko/docs/Web/HTML",
+    Icon: SiHtml5,
+  },
+  {
+    category: "Language",
+    name: "CSS",
+    description: "",
+    url: "https://developer.mozilla.org/ko/docs/Web/CSS",
+    Icon: SiCss3,
+  },
+  {
+    category: "Framework",
+    name: "Next.js",
+    description: "",
+    url: "https://nextjs.org",
+    Icon: SiNextdotjs,
+  },
+  {
+    category: "Framework",
+    name: "React",
+    description: "",
+    url: "https://react.dev",
+    Icon: SiReact,
+  },
   {
     category: "Styling",
-    items: ["Tailwind CSS", "CSS Modules", "Styled Components"],
+    name: "Tailwind CSS",
+    description: "",
+    url: "https://tailwindcss.com",
+    Icon: SiTailwindcss,
   },
-  { category: "Tools", items: ["Git", "GitHub", "Figma", "Vercel"] },
+  {
+    category: "Styling",
+    name: "Styled Components",
+    description: "",
+    url: "https://styled-components.com",
+    Icon: SiStyledcomponents,
+  },
+  {
+    category: "Tools",
+    name: "GitHub",
+    description: "",
+    url: "https://github.com",
+    Icon: SiGithub,
+  },
+  {
+    category: "Tools",
+    name: "Figma",
+    description: "",
+    url: "https://www.figma.com",
+    Icon: SiFigma,
+  },
+  {
+    category: "Tools",
+    name: "Vercel",
+    description: "",
+    url: "https://vercel.com",
+    Icon: SiVercel,
+  },
 ];
 
+const CATEGORIES = ["Language", "Framework", "Styling", "Tools"] as const;
+
 export default function Skills() {
+  const [selectedSkill, setSelectedSkill] = useState<TechItem | null>(null);
+
   return (
-    <section className="mt-12 pb-12 border-b border-neutral-200">
-      <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-6">
-        기술 스택
-      </h2>
-      <ul className="space-y-3">
-        {SKILLS.map((skill) => (
-          <li
-            key={skill.category}
-            className="flex flex-col sm:flex-row gap-1 sm:gap-8"
-          >
-            <span className="text-sm font-medium text-neutral-500 dark:text-neutral-400 sm:w-28 shrink-0">
-              {skill.category}
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {skill.items.map((item) => (
-                <span
-                  key={item}
-                  className="text-sm px-3 py-0.5 border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-300"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <>
+      <section className="mt-12 pb-12 border-b border-neutral-200">
+        <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-6">
+          기술 스택
+        </h2>
+        <div className="space-y-6">
+          {CATEGORIES.map((category) => {
+            const items = SKILLS.filter((s) => s.category === category);
+            return (
+              <div key={category}>
+                <h3 className="text-sm font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-3">
+                  {category}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {items.map((item) => (
+                    <TechIconButton
+                      key={item.name}
+                      icon={item.Icon}
+                      name={item.name}
+                      onClick={() => setSelectedSkill(item)}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {selectedSkill && (
+        <TechDetailModal
+          tech={selectedSkill}
+          onClose={() => setSelectedSkill(null)}
+        />
+      )}
+    </>
   );
 }
