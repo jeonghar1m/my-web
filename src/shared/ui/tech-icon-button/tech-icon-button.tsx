@@ -16,7 +16,7 @@ export default function TechIconButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "flex flex-col items-center gap-2 p-3 rounded-xl w-20",
+        "flex flex-col items-center gap-2 p-3 rounded-xl w-[76px]",
         "text-neutral-600 dark:text-neutral-400",
         "hover:bg-neutral-100 dark:hover:bg-neutral-800",
         "hover:text-neutral-900 dark:hover:text-neutral-100",
