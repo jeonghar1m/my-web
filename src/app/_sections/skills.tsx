@@ -13,13 +13,23 @@ import {
   SiRadixui,
   SiAntdesign,
   SiStyledcomponents,
-  SiEmotion,
   SiGithub,
   SiFigma,
   SiVercel,
 } from "react-icons/si";
 import { TechIconButton } from "@/shared/ui/tech-icon-button";
 import { TechDetailModal, type TechItem } from "@/shared/ui/tech-detail-modal";
+
+const EmotionIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.182c5.423 0 9.818 4.395 9.818 9.818S17.423 21.818 12 21.818 2.182 17.423 2.182 12 6.577 2.182 12 2.182zM8.727 9.818a1.09 1.09 0 1 0 0 2.182 1.09 1.09 0 0 0 0-2.182zm6.546 0a1.09 1.09 0 1 0 0 2.182 1.09 1.09 0 0 0 0-2.182zm-6.819 4.364s1.091 2.182 3.546 2.182 3.546-2.182 3.546-2.182H8.454z" />
+  </svg>
+);
 
 const SKILLS: TechItem[] = [
   {
@@ -104,7 +114,7 @@ const SKILLS: TechItem[] = [
     name: "Emotion",
     description: "",
     url: "https://emotion.sh",
-    Icon: SiEmotion,
+    Icon: EmotionIcon,
   },
   {
     category: "Tools",
