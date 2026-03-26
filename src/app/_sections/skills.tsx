@@ -13,6 +13,7 @@ import {
   SiRadixui,
   SiAntdesign,
   SiStyledcomponents,
+  SiEmotion,
   SiGithub,
   SiFigma,
   SiVercel,
@@ -97,6 +98,13 @@ const SKILLS: TechItem[] = [
     description: "",
     url: "https://styled-components.com",
     Icon: SiStyledcomponents,
+  },
+  {
+    category: "Styling",
+    name: "Emotion",
+    description: "",
+    url: "https://emotion.sh",
+    Icon: SiEmotion,
   },
   {
     category: "Tools",
