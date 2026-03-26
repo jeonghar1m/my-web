@@ -1,11 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
+import iconSrc from "@/app/icon.png";
 import Nav from "./nav";
 
 export default async function Header() {
   return (
     <header className="bg-neutral-700 text-white px-8 pt-8 pb-4">
       <div className="max-w-4xl mx-auto">
-        <Link href="/">
+        <Link href="/" className="inline-flex items-center gap-3">
+          <Image src={iconSrc} alt="로고" width={40} height={40} className="rounded-lg" />
           <h1 className="text-3xl font-bold">정하림</h1>
         </Link>
         <p className="text-neutral-400 text-sm mt-1">
