@@ -8,19 +8,35 @@ import { cn } from "@/shared/lib/utils/common";
 interface ModalOverlayProps {
   children: ReactNode;
   header?: ReactNode;
+  /** 제공하면 router.back() 대신 호출됩니다 (비라우터 모달용) */
+  onClose?: () => void;
+  /** 모달 최대 너비. 기본값 "default" = max-w-3xl, "sm" = max-w-lg */
+  size?: "default" | "sm";
 }
 
-export default function ModalOverlay({ children, header }: ModalOverlayProps) {
+export default function ModalOverlay({
+  children,
+  header,
+  onClose,
+  size = "default",
+}: ModalOverlayProps) {
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
   const touchStartY = useRef<number | null>(null);
 
   const handleClose = useCallback(() => {
-    router.back();
-  }, [router]);
+    if (onClose) {
+      onClose();
+    } else {
+      router.back();
+    }
+  }, [onClose, router]);
 
   const handleLinkCapture = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
+      // onClose 모드(비라우터)일 때는 내부 링크 캡처 불필요
+      if (onClose) return;
+
       const anchor = (e.target as HTMLElement).closest(
         "a[href]",
       ) as HTMLAnchorElement | null;
@@ -47,7 +63,7 @@ export default function ModalOverlay({ children, header }: ModalOverlayProps) {
       window.addEventListener("popstate", onPopState);
       router.back();
     },
-    [router],
+    [onClose, router],
   );
 
   useEffect(() => {
@@ -76,14 +92,11 @@ export default function ModalOverlay({ children, header }: ModalOverlayProps) {
     touchStartY.current = null;
 
     if (delta < -40) {
-      // 위로 스와이프 → 풀스크린
       setIsExpanded(true);
     } else if (delta > 40) {
       if (isExpanded) {
-        // 풀스크린 → 원래 크기
         setIsExpanded(false);
       } else {
-        // 원래 크기 → 닫기
         handleClose();
       }
     }
@@ -100,7 +113,8 @@ export default function ModalOverlay({ children, header }: ModalOverlayProps) {
         className={cn(
           "flex w-full flex-col overflow-hidden",
           "transition-[height,border-radius] duration-300 ease-in-out",
-          "sm:max-w-3xl sm:max-h-[90dvh] sm:rounded-2xl sm:h-auto",
+          "sm:max-h-[90dvh] sm:rounded-2xl sm:h-auto",
+          size === "sm" ? "sm:max-w-lg" : "sm:max-w-3xl",
           "bg-white shadow-2xl",
           "dark:bg-neutral-900",
           isExpanded
