@@ -33,11 +33,9 @@ export default function PortfolioCard({ portfolio }: PortfolioCardProps) {
         <h3 className="text-lg font-semibold group-hover:text-blue-500 transition-colors">
           {title}
         </h3>
-        {endDate && (
-          <p className="mt-1 text-sm text-neutral-500">
-            {startDate.format(YEAR_MONTH_FORMAT)} ~ {endDate.format(YEAR_MONTH_FORMAT)}
-          </p>
-        )}
+        <p className="mt-1 text-sm text-neutral-500">
+          {startDate.format(YEAR_MONTH_FORMAT)} ~ {endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"}
+        </p>
       </div>
     </Link>
   );
