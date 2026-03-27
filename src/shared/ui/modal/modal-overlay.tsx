@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, Suspense, useCallback, useEffect } from "react";
+import { ReactNode, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import { cn } from "@/shared/lib/utils/common";
@@ -12,6 +12,8 @@ interface ModalOverlayProps {
 
 export default function ModalOverlay({ children, header }: ModalOverlayProps) {
   const router = useRouter();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const touchStartY = useRef<number | null>(null);
 
   const handleClose = useCallback(() => {
     router.back();
@@ -36,9 +38,6 @@ export default function ModalOverlay({ children, header }: ModalOverlayProps) {
       e.preventDefault();
       e.stopPropagation();
 
-      // router.push() alone does not clear the @modal parallel route slot.
-      // Close the modal first via router.back(), then navigate to the destination
-      // only if the previous page is not already the target href.
       const onPopState = () => {
         window.removeEventListener("popstate", onPopState);
         if (window.location.pathname !== href) {
@@ -67,6 +66,29 @@ export default function ModalOverlay({ children, header }: ModalOverlayProps) {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [handleClose]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartY.current === null) return;
+    const delta = e.changedTouches[0].clientY - touchStartY.current;
+    touchStartY.current = null;
+
+    if (delta < -40) {
+      // 위로 스와이프 → 풀스크린
+      setIsExpanded(true);
+    } else if (delta > 40) {
+      if (isExpanded) {
+        // 풀스크린 → 원래 크기
+        setIsExpanded(false);
+      } else {
+        // 원래 크기 → 닫기
+        handleClose();
+      }
+    }
+  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 sm:items-center"
@@ -77,15 +99,31 @@ export default function ModalOverlay({ children, header }: ModalOverlayProps) {
       <div
         className={cn(
           "flex w-full flex-col overflow-hidden",
-          "max-h-[85dvh] sm:max-w-3xl sm:max-h-[90dvh]",
-          "rounded-t-2xl sm:rounded-2xl",
+          "transition-[height,border-radius] duration-300 ease-in-out",
+          "sm:max-w-3xl sm:max-h-[90dvh] sm:rounded-2xl sm:h-auto",
           "bg-white shadow-2xl",
           "dark:bg-neutral-900",
+          isExpanded
+            ? "h-[100dvh] rounded-none"
+            : "h-[85dvh] rounded-t-2xl",
         )}
         onClick={(e) => e.stopPropagation()}
         onClickCapture={handleLinkCapture}
       >
-        <div className="flex flex-none items-center gap-2 px-6 py-4">
+        {/* 드래그 핸들 — 모바일 전용 */}
+        <div
+          className="flex flex-none touch-none cursor-grab select-none flex-col items-center pb-1 pt-3 sm:hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="h-1 w-10 rounded-full bg-neutral-300 dark:bg-neutral-600" />
+        </div>
+
+        <div
+          className="flex flex-none items-center gap-2 px-6 py-4 sm:pt-4"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {header && (
             <div className="min-w-0 flex-1">
               <Suspense fallback={null}>{header}</Suspense>
