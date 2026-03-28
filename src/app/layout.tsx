@@ -44,9 +44,9 @@ export default function RootLayout({
           <Header />
           <main className="flex-1 bg-white px-8 py-12">
             <div className="max-w-4xl mx-auto">{children}</div>
+            <ScrollToTopButton />
           </main>
           <Footer />
-          <ScrollToTopButton />
           {modal}
         </Providers>
         <Analytics />

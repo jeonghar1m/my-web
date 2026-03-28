@@ -51,6 +51,13 @@ Root layout (`src/app/layout.tsx`) wraps all pages with Header/Footer and Geist 
 - Responsive: mobile-first with `sm:` / `lg:` breakpoints
 - shadcn components added via `npx shadcn@latest add <component>`
 
+## Git Commit Message Format
+
+커밋 메시지는 `fix:`, `feat:`, `refact:` 등 scope 없이 간결하게 작성할 것.
+
+- O: `fix: footer와 겹치지 않도록 sticky 적용`
+- X: `fix(scroll-to-top): footer와 겹치지 않도록 sticky 적용`
+
 ## Git Commit Author
 
 커밋 시 항상 아래 author 정보를 사용할 것:
