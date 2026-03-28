@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/widgets/header/header";
 import Footer from "@/widgets/footer/footer";
 import { Providers } from "./providers";
+import { ScrollToTopButton } from "@/shared/ui/scroll-to-top";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ReactNode } from "react";
@@ -45,6 +46,7 @@ export default function RootLayout({
             <div className="max-w-4xl mx-auto">{children}</div>
           </main>
           <Footer />
+          <ScrollToTopButton />
           {modal}
         </Providers>
         <Analytics />
