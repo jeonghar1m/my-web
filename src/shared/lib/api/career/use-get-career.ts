@@ -17,6 +17,7 @@ async function getCareer(id: number): Promise<Career> {
     startDate: dayjs(row.startDate),
     endDate: row.endDate ? dayjs(row.endDate) : undefined,
     description: row.description ?? undefined,
+    workingPlace: row.workingPlace ?? undefined,
   };
 }
 
