@@ -7,7 +7,7 @@ interface CareerInfoBoxProps {
 }
 
 export default function CareerInfoBox({ career }: CareerInfoBoxProps) {
-  const { companyUrl, startDate, endDate } = career;
+  const { companyUrl, startDate, endDate, workingPlace } = career;
 
   return (
     <InfoBox>
@@ -19,6 +19,9 @@ export default function CareerInfoBox({ career }: CareerInfoBoxProps) {
         type="text"
         content={`${startDate.format(YEAR_MONTH_FORMAT)} ~ ${endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"}`}
       />
+      {workingPlace && (
+        <InfoBoxContent title="근무지" type="text" content={workingPlace} />
+      )}
     </InfoBox>
   );
 }
