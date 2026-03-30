@@ -17,6 +17,7 @@ async function getCareerList(): Promise<Career[]> {
     startDate: dayjs(item.startDate),
     endDate: item.endDate ? dayjs(item.endDate) : undefined,
     description: item.description ?? undefined,
+    workingPlace: item.workingPlace ?? undefined,
   }));
 }
 
