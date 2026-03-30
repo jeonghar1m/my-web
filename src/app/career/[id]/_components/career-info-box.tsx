@@ -19,7 +19,7 @@ export default function CareerInfoBox({ career }: CareerInfoBoxProps) {
         type="text"
         content={`${startDate.format(YEAR_MONTH_FORMAT)} ~ ${endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"}`}
       />
-      {workingPlace != null && (
+      {workingPlace && (
         <InfoBoxContent title="근무지" type="text" content={workingPlace} />
       )}
     </InfoBox>
