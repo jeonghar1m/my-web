@@ -7,4 +7,5 @@ export interface Career extends CommonModel {
   startDate: Dayjs;
   endDate?: Dayjs;
   description?: string;
+  workingPlace?: string | null;
 }
