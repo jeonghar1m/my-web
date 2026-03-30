@@ -8,7 +8,7 @@ const EDUCATIONS = [
   {
     period: "2017.03 ~ 2022.08",
     school: "홍익대학교",
-    major: "게임소프트웨어전공 졸업",
+    major: "게임소프트웨어전공 학사",
   },
 ];
 
