@@ -18,7 +18,7 @@ export default async function PortfolioPage({
   searchParams,
 }: PortfolioPageProps) {
   const { sort: sortParam } = await searchParams;
-  const sort: SortOrder = sortParam === "oldest" ? "oldest" : "latest";
+  const sort: SortOrder = sortParam === "latest" ? "latest" : "oldest";
 
   const portfolios = await getPortfolios(sort);
 

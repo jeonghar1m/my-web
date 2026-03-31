@@ -16,7 +16,7 @@ export default async function CareerPage({
   searchParams: Promise<{ sort?: string }>;
 }) {
   const { sort: sortParam } = await searchParams;
-  const sort: SortOrder = sortParam === "oldest" ? "oldest" : "latest";
+  const sort: SortOrder = sortParam === "latest" ? "latest" : "oldest";
 
   const careers = await getCareers(sort);
 
