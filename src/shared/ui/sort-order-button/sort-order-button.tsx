@@ -1,17 +1,32 @@
-import type { SortOrder } from "./use-sort-order";
+"use client";
+
+import { SortOrder } from "@/shared/model/common";
+import { useRouter, usePathname } from "next/navigation";
+import { useTransition } from "react";
 
 interface SortOrderButtonProps {
-  sortOrder: SortOrder;
-  onToggle: () => void;
+  currentSort: SortOrder;
 }
 
-export function SortOrderButton({ sortOrder, onToggle }: SortOrderButtonProps) {
+export function SortOrderButton({ currentSort }: SortOrderButtonProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
+
+  const handleToggle = () => {
+    const nextSort: SortOrder = currentSort === "latest" ? "oldest" : "latest";
+    startTransition(() => {
+      router.replace(`${pathname}?sort=${nextSort}`);
+    });
+  };
+
   return (
     <button
-      onClick={onToggle}
-      className="cursor-pointer text-sm text-neutral-500 transition-colors hover:text-neutral-900"
+      onClick={handleToggle}
+      disabled={isPending}
+      className="cursor-pointer text-sm text-neutral-500 transition-colors hover:text-neutral-900 disabled:opacity-50"
     >
-      {sortOrder === "latest" ? "최신순 ↓" : "과거순 ↑"}
+      {currentSort === "latest" ? "최신순 ↓" : "과거순 ↑"}
     </button>
   );
 }

@@ -1,20 +1,17 @@
-"use client";
-
-import { notFound } from "next/navigation";
-import { useGetPortfolio } from "@/shared/lib/api/portfolio";
 import { MarkdownRenderer } from "@/shared/ui/markdown";
+import { Portfolio } from "@/shared/model/portfolio";
 import PortfolioInfoBox from "./portfolio-info-box";
 
-export default function PortfolioDetailContent({ id }: { id: number }) {
-  const { data: portfolio, isError } = useGetPortfolio(id);
-
-  if (isError) notFound();
-
+export default function PortfolioDetailContent({
+  portfolio,
+}: {
+  portfolio: Portfolio;
+}) {
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-bold">{portfolio?.title}</h2>
+      <h2 className="text-2xl font-bold">{portfolio.title}</h2>
       <PortfolioInfoBox portfolio={portfolio} />
-      <MarkdownRenderer content={portfolio?.description || ""} />
+      <MarkdownRenderer content={portfolio.description || ""} />
     </div>
   );
 }

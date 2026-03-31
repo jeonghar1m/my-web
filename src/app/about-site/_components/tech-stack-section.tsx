@@ -34,7 +34,7 @@ const TECH_STACK: TechItem[] = [
     category: "Library",
     name: "TanStack Query",
     description:
-      "포트폴리오·커리어 목록과 상세 데이터를 클라이언트에서 패칭하고 캐싱. API Route와 연동해 Supabase 데이터를 가져오는 데 사용",
+      "기존에 API Router를 통해 Supabase 데이터를 fetching 해오는데 사용했지만, 현재는 서버 컴포넌트쪽 호출 방식으로 구조가 바뀌면서 install은 되어 있는 상태이지만, 실질적으로 사용하는 곳이 없음.",
     url: "https://tanstack.com/query",
     Icon: SiReactquery,
   },
