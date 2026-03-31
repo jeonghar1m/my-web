@@ -9,3 +9,12 @@ export interface Career extends CommonModel {
   description?: string;
   workingPlace?: string;
 }
+
+export interface CareerRow {
+  id: number;
+  title: string;
+  companyUrl: string | null;
+  startDate: string;
+  endDate: string | null;
+  description: string | null;
+}

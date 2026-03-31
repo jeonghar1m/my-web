@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import { supabaseServerFrom } from "@/shared/lib/supabase/server";
-import PortfolioDetailView from "./_components/portfolio-detail-view";
+import { notFound } from "next/navigation";
 import PortfolioDetailHeader from "./_components/portfolio-detail-header";
+import PortfolioDetailContent from "./_components/portfolio-detail-content";
+import { getPortfolio } from "@/shared/api/portfolio";
 
 export const dynamic = "force-dynamic";
 
@@ -12,14 +12,8 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  try {
-    const row = await supabaseServerFrom<{ title: string }>((client) =>
-      client.from("portfolio").select("title").eq("id", Number(id)).single(),
-    );
-    return { title: row.title };
-  } catch {
-    return { title: "Portfolio" };
-  }
+  const portfolio = await getPortfolio(Number(id));
+  return { title: portfolio?.title ?? "Portfolio" };
 }
 
 export default async function PortfolioDetailPage({
@@ -28,13 +22,14 @@ export default async function PortfolioDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const portfolio = await getPortfolio(Number(id));
+
+  if (!portfolio) notFound();
 
   return (
     <>
-      <Suspense fallback={null}>
-        <PortfolioDetailHeader id={+id} />
-      </Suspense>
-      <PortfolioDetailView id={+id} />
+      <PortfolioDetailHeader portfolio={portfolio} />
+      <PortfolioDetailContent portfolio={portfolio} />
     </>
   );
 }
