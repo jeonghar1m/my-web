@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CareerList from "./career-list";
-import { CareerSortOrder, getCareers } from "@/shared/api/career";
+import { getCareers } from "@/shared/api/career";
+import { SortOrder } from "@/shared/model/common";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +16,7 @@ export default async function CareerPage({
   searchParams: Promise<{ sort?: string }>;
 }) {
   const { sort: sortParam } = await searchParams;
-  const sort: CareerSortOrder = sortParam === "oldest" ? "oldest" : "latest";
+  const sort: SortOrder = sortParam === "oldest" ? "oldest" : "latest";
 
   const careers = await getCareers(sort);
 
