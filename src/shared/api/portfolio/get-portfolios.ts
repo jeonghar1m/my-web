@@ -1,11 +1,10 @@
 import { supabaseServerFrom } from "@/shared/lib/supabase/server";
+import { SortOrder } from "@/shared/model/common";
 import { Portfolio, PortfolioRow } from "@/shared/model/portfolio";
 import dayjs from "dayjs";
 
-export type PortfolioSortOrder = "latest" | "oldest";
-
 const getPortfolios = async (sort?: string) => {
-  const sortOrder: PortfolioSortOrder = sort === "oldest" ? "oldest" : "latest";
+  const sortOrder: SortOrder = sort === "oldest" ? "oldest" : "latest";
 
   const rows = await supabaseServerFrom<PortfolioRow[]>((client) =>
     client

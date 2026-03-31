@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PortfolioList from "./portfolio-list";
-import { getPortfolios, PortfolioSortOrder } from "@/shared/api/portfolio";
+import { getPortfolios } from "@/shared/api/portfolio";
+import { SortOrder } from "@/shared/model/common";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +18,7 @@ export default async function PortfolioPage({
   searchParams,
 }: PortfolioPageProps) {
   const { sort: sortParam } = await searchParams;
-  const sort: PortfolioSortOrder = sortParam === "oldest" ? "oldest" : "latest";
+  const sort: SortOrder = sortParam === "oldest" ? "oldest" : "latest";
 
   const portfolios = await getPortfolios(sort);
 

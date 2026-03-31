@@ -2,11 +2,11 @@ import { SortOrderButton } from "@/shared/ui/sort-order-button";
 import CareerCards from "./career-cards";
 import Link from "next/link";
 import { Career } from "@/shared/model/career";
-import { CareerSortOrder } from "@/shared/api/career";
+import { SortOrder } from "@/shared/model/common";
 
 interface CareerListProps {
   careers: Career[];
-  currentSort?: CareerSortOrder;
+  currentSort?: SortOrder;
   visibleOrderButton?: boolean;
   limit?: number;
 }

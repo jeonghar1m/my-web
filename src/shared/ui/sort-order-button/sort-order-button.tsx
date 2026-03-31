@@ -1,6 +1,6 @@
 "use client";
 
-import { SortOrder } from "@/shared/api/portfolio";
+import { SortOrder } from "@/shared/model/common";
 import { useRouter, usePathname } from "next/navigation";
 import { useTransition } from "react";
 

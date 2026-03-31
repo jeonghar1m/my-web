@@ -2,11 +2,11 @@ import { SortOrderButton } from "@/shared/ui/sort-order-button";
 import PortfolioCards from "./portfolio-cards";
 import Link from "next/link";
 import { Portfolio } from "@/shared/model/portfolio";
-import { PortfolioSortOrder } from "@/shared/api/portfolio";
+import { SortOrder } from "@/shared/model/common";
 
 interface PortfolioListProps {
   portfolios: Portfolio[];
-  currentSort?: PortfolioSortOrder;
+  currentSort?: SortOrder;
   visibleOrderButton?: boolean;
   limit?: number;
 }

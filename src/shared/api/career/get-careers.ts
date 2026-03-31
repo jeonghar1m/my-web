@@ -1,11 +1,10 @@
 import { supabaseServerFrom } from "@/shared/lib/supabase/server";
 import { Career, CareerRow } from "@/shared/model/career";
+import { SortOrder } from "@/shared/model/common";
 import dayjs from "dayjs";
 
-export type CareerSortOrder = "latest" | "oldest";
-
 const getCareers = async (sort?: string) => {
-  const sortOrder: CareerSortOrder = sort === "oldest" ? "oldest" : "latest";
+  const sortOrder: SortOrder = sort === "oldest" ? "oldest" : "latest";
 
   const rows = await supabaseServerFrom<CareerRow[]>((client) =>
     client
