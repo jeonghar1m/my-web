@@ -1,33 +1,31 @@
-"use client";
-
-import { SortOrderButton, useSortOrder } from "@/shared/ui/sort-order-button";
+import { SortOrderButton } from "@/shared/ui/sort-order-button";
 import CareerCards from "./career-cards";
-import { Suspense } from "react";
-import CareerListSkeleton from "./career-list-skeleton";
 import Link from "next/link";
+import { Career } from "@/shared/model/career";
+import { CareerSortOrder } from "@/shared/api/career";
 
-interface CareerPageContentProps {
+interface CareerListProps {
+  careers: Career[];
+  currentSort?: CareerSortOrder;
   visibleOrderButton?: boolean;
   limit?: number;
 }
 
 export default function CareerList({
+  careers,
+  currentSort = "latest",
   visibleOrderButton = false,
   limit,
-}: CareerPageContentProps) {
-  const { sortOrder, toggle } = useSortOrder();
+}: CareerListProps) {
+  const displayCareers = limit ? careers.slice(0, limit) : careers;
 
   return (
     <section className="w-full">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold">경력</h2>
-        {visibleOrderButton && (
-          <SortOrderButton sortOrder={sortOrder} onToggle={toggle} />
-        )}
+        {visibleOrderButton && <SortOrderButton currentSort={currentSort} />}
       </div>
-      <Suspense fallback={<CareerListSkeleton />}>
-        <CareerCards sortOrder={sortOrder} limit={limit} />
-      </Suspense>
+      <CareerCards careers={displayCareers} />
       {limit && (
         <div className="mt-6 text-center">
           <Link

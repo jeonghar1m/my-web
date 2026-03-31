@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import { supabaseServerFrom } from "@/shared/lib/supabase/server";
-import CareerDetailView from "./_components/career-detail-view";
+import { notFound } from "next/navigation";
 import CareerDetailHeader from "./_components/career-detail-header";
+import CareerDetailContent from "./_components/career-detail-content";
+import getCareer from "@/shared/api/career/get-career";
 
 export const dynamic = "force-dynamic";
 
@@ -12,14 +12,8 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  try {
-    const row = await supabaseServerFrom<{ title: string }>((client) =>
-      client.from("career").select("title").eq("id", Number(id)).single(),
-    );
-    return { title: row.title };
-  } catch {
-    return { title: "Career" };
-  }
+  const career = await getCareer(Number(id));
+  return { title: career?.title ?? "Career" };
 }
 
 export default async function CareerDetailPage({
@@ -28,13 +22,14 @@ export default async function CareerDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const career = await getCareer(Number(id));
+
+  if (!career) notFound();
 
   return (
     <>
-      <Suspense fallback={null}>
-        <CareerDetailHeader id={+id} />
-      </Suspense>
-      <CareerDetailView id={+id} />
+      <CareerDetailHeader career={career} />
+      <CareerDetailContent career={career} />
     </>
   );
 }
