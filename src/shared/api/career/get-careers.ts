@@ -4,7 +4,7 @@ import { SortOrder } from "@/shared/model/common";
 import dayjs from "dayjs";
 
 const getCareers = async (sort?: string) => {
-  const sortOrder: SortOrder = sort === "oldest" ? "oldest" : "latest";
+  const sortOrder: SortOrder = sort === "latest" ? "latest" : "oldest";
 
   const rows = await supabaseServerFrom<CareerRow[]>((client) =>
     client

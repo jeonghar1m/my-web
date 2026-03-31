@@ -4,7 +4,7 @@ import { Portfolio, PortfolioRow } from "@/shared/model/portfolio";
 import dayjs from "dayjs";
 
 const getPortfolios = async (sort?: string) => {
-  const sortOrder: SortOrder = sort === "oldest" ? "oldest" : "latest";
+  const sortOrder: SortOrder = sort === "latest" ? "latest" : "oldest";
 
   const rows = await supabaseServerFrom<PortfolioRow[]>((client) =>
     client
