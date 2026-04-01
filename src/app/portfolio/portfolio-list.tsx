@@ -1,22 +1,23 @@
+"use client";
+
 import { SortOrderButton } from "@/shared/ui/sort-order-button";
 import PortfolioCards from "./portfolio-cards";
 import Link from "next/link";
-import { Portfolio } from "@/shared/model/portfolio";
 import { SortOrder } from "@/shared/model/common";
+import useGetPortfolioList from "@/shared/lib/api/portfolio/use-get-portfolio-list";
 
 interface PortfolioListProps {
-  portfolios: Portfolio[];
   currentSort?: SortOrder;
   visibleOrderButton?: boolean;
   limit?: number;
 }
 
 export default function PortfolioList({
-  portfolios,
-  currentSort = "latest",
+  currentSort = "oldest",
   visibleOrderButton = false,
   limit,
 }: PortfolioListProps) {
+  const { data: portfolios } = useGetPortfolioList(currentSort);
   const displayPortfolios = limit ? portfolios.slice(0, limit) : portfolios;
 
   return (

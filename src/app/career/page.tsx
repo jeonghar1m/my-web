@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { getQueryClient } from "@/shared/lib/query-client";
+import getCareers from "@/shared/api/career/get-careers";
 import CareerList from "./career-list";
-import { getCareers } from "@/shared/api/career";
+import CareerListSkeleton from "./career-list-skeleton";
 import { SortOrder } from "@/shared/model/common";
+import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +22,24 @@ export default async function CareerPage({
   const { sort: sortParam } = await searchParams;
   const sort: SortOrder = sortParam === "latest" ? "latest" : "oldest";
 
-  const careers = await getCareers(sort);
+  const queryClient = getQueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["careers", sort],
+    queryFn: async () => {
+      const careers = await getCareers(sort);
+      return careers.map((c) => ({
+        ...c,
+        startDate: c.startDate.toISOString(),
+        endDate: c.endDate?.toISOString() ?? null,
+      }));
+    },
+  });
 
-  return <CareerList careers={careers} currentSort={sort} visibleOrderButton />;
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Suspense fallback={<CareerListSkeleton />}>
+        <CareerList currentSort={sort} visibleOrderButton />
+      </Suspense>
+    </HydrationBoundary>
+  );
 }
