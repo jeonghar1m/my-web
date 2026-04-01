@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { getQueryClient } from "@/shared/lib/query-client";
-import getCareers from "@/shared/api/career/get-careers";
-import getPortfolios from "@/shared/api/portfolio/get-portfolios";
+import { fetchCareersAction } from "@/shared/actions/career";
+import { fetchPortfoliosAction } from "@/shared/actions/portfolio";
 import { Educations, Hero, Skills } from "./_sections";
 import CareerList from "./career/career-list";
 import CareerListSkeleton from "./career/career-list-skeleton";
@@ -14,25 +14,11 @@ export default async function HomePage() {
   await Promise.all([
     queryClient.prefetchQuery({
       queryKey: ["careers", "oldest"],
-      queryFn: async () => {
-        const careers = await getCareers("oldest");
-        return careers.map((c) => ({
-          ...c,
-          startDate: c.startDate.toISOString(),
-          endDate: c.endDate?.toISOString() ?? null,
-        }));
-      },
+      queryFn: () => fetchCareersAction("oldest"),
     }),
     queryClient.prefetchQuery({
       queryKey: ["portfolios", "oldest"],
-      queryFn: async () => {
-        const portfolios = await getPortfolios("oldest");
-        return portfolios.map((p) => ({
-          ...p,
-          startDate: p.startDate.toISOString(),
-          endDate: p.endDate?.toISOString() ?? null,
-        }));
-      },
+      queryFn: () => fetchPortfoliosAction("oldest"),
     }),
   ]);
 

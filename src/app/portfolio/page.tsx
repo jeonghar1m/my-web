@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { getQueryClient } from "@/shared/lib/query-client";
-import getPortfolios from "@/shared/api/portfolio/get-portfolios";
+import { fetchPortfoliosAction } from "@/shared/actions/portfolio";
 import PortfolioList from "./portfolio-list";
 import PortfolioListSkeleton from "./_components/portfolio-list-skeleton";
 import { SortOrder } from "@/shared/model/common";
@@ -27,14 +27,7 @@ export default async function PortfolioPage({
   const queryClient = getQueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["portfolios", sort],
-    queryFn: async () => {
-      const portfolios = await getPortfolios(sort);
-      return portfolios.map((p) => ({
-        ...p,
-        startDate: p.startDate.toISOString(),
-        endDate: p.endDate?.toISOString() ?? null,
-      }));
-    },
+    queryFn: () => fetchPortfoliosAction(sort),
   });
 
   return (
