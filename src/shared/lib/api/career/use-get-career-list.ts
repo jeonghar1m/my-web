@@ -2,28 +2,24 @@
 
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Career } from "@/shared/model/career";
-import { getApiBaseUrl } from "@/shared/lib/utils/common";
+import { SortOrder } from "@/shared/model/common";
+import { fetchCareersAction } from "@/shared/actions/career";
 import dayjs from "dayjs";
 
-async function getCareerList(): Promise<Career[]> {
-  const res = await fetch(`${getApiBaseUrl()}/api/career`);
-  if (!res.ok) throw new Error("Failed to fetch career list");
-  const rows = await res.json();
+type CareerRaw = Omit<Career, "startDate" | "endDate"> & {
+  startDate: string;
+  endDate?: string | null;
+};
 
-  return rows.map((item: Career & { startDate: string; endDate?: string }) => ({
-    id: item.id,
-    title: item.title,
-    companyUrl: item.companyUrl ?? undefined,
-    startDate: dayjs(item.startDate),
-    endDate: item.endDate ? dayjs(item.endDate) : undefined,
-    description: item.description ?? undefined,
-    workingPlace: item.workingPlace ?? undefined,
-  }));
-}
-
-export default function useGetCareerList() {
+export default function useGetCareerList(sort: SortOrder = "oldest") {
   return useSuspenseQuery({
-    queryKey: ["career", "list"],
-    queryFn: getCareerList,
+    queryKey: ["careers", sort],
+    queryFn: () => fetchCareersAction(sort),
+    select: (data: CareerRaw[]): Career[] =>
+      data.map((c) => ({
+        ...c,
+        startDate: dayjs(c.startDate),
+        endDate: c.endDate ? dayjs(c.endDate) : undefined,
+      })),
   });
 }
