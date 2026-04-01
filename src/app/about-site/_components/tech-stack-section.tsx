@@ -34,7 +34,7 @@ const TECH_STACK: TechItem[] = [
     category: "Library",
     name: "TanStack Query",
     description:
-      "기존에 API Router를 통해 Supabase 데이터를 fetching 해오는데 사용했지만, 현재는 서버 컴포넌트쪽 호출 방식으로 구조가 바뀌면서 install은 되어 있는 상태이지만, 실질적으로 사용하는 곳이 없음.",
+      "서버 컴포넌트에서 prefetchQuery로 데이터를 미리 가져오고 HydrationBoundary로 클라이언트에 전달. queryFn으로 Server Action을 사용해 refetch 시에도 Supabase 호출이 서버에서만 발생",
     url: "https://tanstack.com/query",
     Icon: SiReactquery,
   },
