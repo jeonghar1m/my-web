@@ -23,7 +23,7 @@ const TECH_STACK: TechItem[] = [
     Icon: SiNextdotjs,
   },
   {
-    category: "Framework",
+    category: "Library",
     name: "React 19",
     description:
       "서버 컴포넌트를 기본으로 사용하고, 상호작용이 필요한 부분에만 'use client'를 적용해 클라이언트 번들을 최소화",
