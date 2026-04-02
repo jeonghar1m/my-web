@@ -1,35 +1,75 @@
 # Repository Guidelines
 
-## Project Structure & Module Organization
-- `src/app/` contains Next.js App Router pages, route-specific components, and `globals.css`.
-- `src/shared/` holds reusable UI (`ui/`), utilities (`lib/utils.ts`), and types (`model/`).
-- `src/widgets/` contains layout components like `Header` and `Footer`.
-- `public/` stores static assets (e.g., `public/images/portfolio/`).
-- Path alias: `@/*` maps to `src/*` for imports.
+## Overview
+- This project is a **Next.js 16 + App Router** portfolio site.
+- Primary language is **TypeScript 5 (strict mode)**.
+- UI stack uses **Tailwind CSS v4**, **Radix UI**, and **shadcn/ui**.
+- Path alias: `@/*` maps to `src/*`.
 
-## Build, Test, and Development Commands
-- `npm run dev` starts the local Next.js dev server at `http://localhost:3000`.
-- `npm run build` creates the production build.
-- `npm start` runs the production server from the build output.
-- `npm run lint` runs ESLint (Next.js + TypeScript presets).
+## Project Structure & Module Organization
+- `src/app/` contains App Router pages, route-specific components, and `globals.css`.
+- `src/shared/` contains reusable modules:
+  - `ui/` for shared UI components
+  - `lib/utils.ts` for utilities (including `cn()`)
+  - `model/` for shared types/interfaces
+- `src/widgets/` contains layout components such as `Header` and `Footer`.
+- `public/` stores static assets (e.g., `public/images/portfolio/`).
+
+## Architecture & Routing
+- Prefer **Server Components by default**.
+- Add `"use client"` only where interactivity is required.
+- Current routes:
+  - `/` : home page
+  - `/portfolio` : portfolio grid list
+  - `/portfolio/[id]` : portfolio detail page (dynamic route)
+  - custom 404 (`not-found`)
+- Root layout (`src/app/layout.tsx`) wraps pages with shared layout (Header/Footer + font setup).
+- Portfolio data is static (`src/app/portfolio/portfolio-data.tsx`), without API/database dependency.
+
+## Build, Lint, and Run Commands
+- `npm run dev` — starts local dev server (`http://localhost:3000`)
+- `npm run build` — builds production bundle
+- `npm start` — runs production server
+- `npm run lint` — runs ESLint (Next.js + TypeScript presets)
+
+## Styling Conventions
+- Use Tailwind utility classes in components.
+- Theme tokens are defined via CSS variables in `src/app/globals.css`.
+- Dark mode is class-based (`.dark`).
+- Keep mobile-first responsive strategy (`sm:`, `lg:` breakpoints).
 
 ## Coding Style & Naming Conventions
-- Language: TypeScript (strict mode).
-- Components use PascalCase (e.g., `PortfolioCard.tsx`); utilities use camelCase (e.g., `utils.ts`).
-- Prefer Next.js server components by default; add "use client" only when needed.
-- Styling uses Tailwind CSS v4 utilities and CSS variables in `src/app/globals.css`.
+- Components: **PascalCase** (e.g., `PortfolioCard.tsx`)
+- Utilities/helpers: **camelCase** (e.g., `utils.ts`)
+- Use Next.js `Image` component for images when applicable.
+- Keep content and UI text in Korean where existing pages follow Korean tone.
 
 ## Testing Guidelines
-- No test framework or test scripts are configured yet.
-- If adding tests, introduce a framework and document the new `npm run test` command here.
+- No test framework is configured currently.
+- If tests are introduced, also document setup and add `npm run test` in this file.
 
 ## Commit & Pull Request Guidelines
-- Commits follow a simple prefix convention seen in history: `feat:`, `fix:`, `refact:`, `chore:`, `docs:` (short, imperative).
+- Commit message prefixes: `feat:`, `fix:`, `refact:`, `chore:`, `docs:`.
+- Keep commit subjects short and imperative; avoid scope parentheses unless required.
+  - Recommended: `fix: footer와 겹치지 않도록 sticky 적용`
+  - Avoid: `fix(scroll-to-top): footer와 겹치지 않도록 sticky 적용`
 - PRs should include:
-  - A concise summary of changes and rationale.
-  - Linked issue/ticket when applicable.
-  - Screenshots or short clips for UI changes.
+  - concise summary and rationale
+  - related issue/ticket (if available)
+  - screenshots/short clips for UI changes
+
+## Git Commit Author (Required)
+- Use the following author/committer identity for commits in this repository:
+  - **Name**: Jeong Harim
+  - **Email**: me@jeongharim.dev
+- Recommended commit command format:
+
+```bash
+GIT_COMMITTER_NAME="Jeong Harim" GIT_COMMITTER_EMAIL="me@jeongharim.dev" \
+  git commit --author="Jeong Harim <me@jeongharim.dev>" ...
+```
 
 ## Configuration Tips
-- ESLint is configured via `eslint.config.mjs` and Next.js presets.
-- TypeScript path alias is defined in `tsconfig.json`; keep it in sync if paths change.
+- ESLint config: `eslint.config.mjs`
+- TypeScript config and path alias: `tsconfig.json`
+- Keep tsconfig path aliases aligned with actual folder structure changes.
