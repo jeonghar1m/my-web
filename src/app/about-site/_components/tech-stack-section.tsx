@@ -34,7 +34,7 @@ const TECH_STACK: TechItem[] = [
     category: "Library",
     name: "TanStack Query",
     description:
-      "서버 컴포넌트에서 prefetchQuery로 데이터를 미리 가져오고 HydrationBoundary로 클라이언트에 전달. queryFn으로 Server Action을 사용해 refetch 시에도 Supabase 호출이 서버에서만 발생",
+      "이 프로젝트에서는 현재 TanStack Query를 사용하지 않고 있으며, 데이터 조회는 Next.js 서버 컴포넌트 기반 패턴으로 정리되어 있음. 과거 실험 단계에서 prefetch/hydration 패턴을 검토한 이력이 있음",
     url: "https://tanstack.com/query",
     Icon: SiReactquery,
   },
