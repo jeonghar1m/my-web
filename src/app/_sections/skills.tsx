@@ -57,7 +57,7 @@ const SKILLS: TechItem[] = [
     Icon: SiNextdotjs,
   },
   {
-    category: "Framework",
+    category: "Library",
     name: "React",
     description: "",
     url: "https://react.dev",
