@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { getQueryClient } from "@/shared/lib/query-client";
-import { fetchPortfoliosAction } from "@/shared/actions/portfolio";
+import { getPortfolios } from "@/shared/api/portfolio";
 import PortfolioList from "./portfolio-list";
-import PortfolioListSkeleton from "./_components/portfolio-list-skeleton";
 import { SortOrder } from "@/shared/model/common";
-import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -24,17 +20,13 @@ export default async function PortfolioPage({
   const { sort: sortParam } = await searchParams;
   const sort: SortOrder = sortParam === "latest" ? "latest" : "oldest";
 
-  const queryClient = getQueryClient();
-  await queryClient.prefetchQuery({
-    queryKey: ["portfolios", sort],
-    queryFn: () => fetchPortfoliosAction(sort),
-  });
+  const portfolios = await getPortfolios(sort);
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <Suspense fallback={<PortfolioListSkeleton />}>
-        <PortfolioList currentSort={sort} visibleOrderButton />
-      </Suspense>
-    </HydrationBoundary>
+    <PortfolioList
+      portfolios={portfolios}
+      currentSort={sort}
+      visibleOrderButton
+    />
   );
 }

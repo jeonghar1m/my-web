@@ -1,23 +1,22 @@
-"use client";
-
 import { SortOrderButton } from "@/shared/ui/sort-order-button";
 import CareerCards from "./career-cards";
 import Link from "next/link";
+import { Career } from "@/shared/model/career";
 import { SortOrder } from "@/shared/model/common";
-import useGetCareerList from "@/shared/lib/api/career/use-get-career-list";
 
 interface CareerListProps {
+  careers: Career[];
   currentSort?: SortOrder;
   visibleOrderButton?: boolean;
   limit?: number;
 }
 
 export default function CareerList({
+  careers,
   currentSort = "oldest",
   visibleOrderButton = false,
   limit,
 }: CareerListProps) {
-  const { data: careers } = useGetCareerList(currentSort);
   const displayCareers = limit ? careers.slice(0, limit) : careers;
 
   return (
