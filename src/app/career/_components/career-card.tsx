@@ -1,5 +1,6 @@
 import { YEAR_MONTH_FORMAT } from "@/shared/constants/date";
 import { Career } from "@/shared/model/career";
+import { Card, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 
 interface CareerCardProps {
@@ -10,17 +11,23 @@ export default function CareerCard({ career }: CareerCardProps) {
   const { id, title, startDate, endDate } = career;
 
   return (
-    <Link
-      href={`/career/${id}`}
-      className="flex items-center justify-between rounded-lg border border-neutral-200 px-5 py-4 transition-shadow hover:shadow-md dark:border-neutral-700"
-    >
-      <span className="font-semibold text-neutral-900 dark:text-neutral-100">
-        {title}
-      </span>
-      <span className="text-sm text-neutral-500">
-        {startDate.format(YEAR_MONTH_FORMAT)} ~{" "}
-        {endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"}
-      </span>
-    </Link>
+    <Card asChild size="2" className="transition-shadow hover:shadow-md">
+      <Link href={`/career/${id}`} className="group block">
+        <Flex align="center" justify="between" gap="3">
+          <Text
+            as="span"
+            size="3"
+            weight="bold"
+            className="transition-colors group-hover:text-blue-500"
+          >
+            {title}
+          </Text>
+          <Text as="span" size="2" color="gray">
+            {startDate.format(YEAR_MONTH_FORMAT)} ~{" "}
+            {endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"}
+          </Text>
+        </Flex>
+      </Link>
+    </Card>
   );
 }

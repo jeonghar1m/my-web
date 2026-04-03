@@ -1,5 +1,6 @@
 "use client";
 
+import { ScrollArea } from "@radix-ui/themes";
 import { ReactNode, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
@@ -156,9 +157,9 @@ export default function ModalOverlay({
             <X size={20} />
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto px-8 pb-8">
-          {children}
-        </div>
+        <ScrollArea type="auto" scrollbars="vertical" className="min-h-0 flex-1">
+          <div className="px-8 pb-8">{children}</div>
+        </ScrollArea>
       </div>
     </div>
   );
