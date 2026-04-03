@@ -1,4 +1,4 @@
-import { Flex, Text } from "@radix-ui/themes";
+import { DataList, Link, Text } from "@radix-ui/themes";
 
 interface InfoBoxContentProps {
   title: string;
@@ -12,20 +12,26 @@ export default function InfoBoxContent({
   content,
 }: InfoBoxContentProps) {
   return (
-    <Flex align="center" gap="2">
-      <h3 className="text-lg font-semibold">{title}</h3>
+    <DataList.Item>
+      <DataList.Label minWidth="88px" highContrast>
+        {title}
+      </DataList.Label>
       {type === "link" ? (
-        <a
-          href={content}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline break-all min-w-0"
-        >
-          {content}
-        </a>
+        <DataList.Value>
+          <Link
+            href={content}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="min-w-0 break-all"
+          >
+            {content}
+          </Link>
+        </DataList.Value>
       ) : (
-        <Text>{content}</Text>
+        <DataList.Value>
+          <Text className="break-words">{content}</Text>
+        </DataList.Value>
       )}
-    </Flex>
+    </DataList.Item>
   );
 }
