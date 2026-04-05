@@ -14,7 +14,7 @@ export function ScrollToTopButton() {
 
   return (
     <div
-      className={`sticky mb-24 flex justify-end pointer-events-none [bottom:calc(env(safe-area-inset-bottom)+1.5rem)] ${
+      className={`sticky mb-24 flex justify-end pointer-events-none [bottom:calc(env(safe-area-inset-bottom)+5.5rem)] md:[bottom:calc(env(safe-area-inset-bottom)+1.5rem)] ${
         visible ? "" : "pointer-events-none"
       }`}
     >
