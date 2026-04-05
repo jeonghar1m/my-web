@@ -3,14 +3,35 @@
 import { PinTopIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
 
+const MIN_SCROLLABLE_HEIGHT = 120;
+
 export function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
+  const [renderable, setRenderable] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 0);
+    const handleScroll = () => {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const canRender = scrollableHeight > MIN_SCROLLABLE_HEIGHT;
+
+      setRenderable(canRender);
+      setVisible(canRender && window.scrollY > 0);
+    };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
+
+  if (!renderable) {
+    return null;
+  }
 
   return (
     <div
