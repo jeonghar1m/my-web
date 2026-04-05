@@ -5,18 +5,39 @@ import { useEffect, useState } from "react";
 
 export function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
+  const [footerOffset, setFooterOffset] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 0);
+    const handleScroll = () => {
+      setVisible(window.scrollY > 0);
+
+      const footer = document.querySelector("#site-footer");
+      if (!footer) {
+        setFooterOffset(0);
+        return;
+      }
+
+      const footerRect = footer.getBoundingClientRect();
+      const overlap = Math.max(0, window.innerHeight - footerRect.top);
+      setFooterOffset(overlap);
+    };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
     <div
-      className={`sticky mb-24 flex justify-end pointer-events-none [bottom:calc(env(safe-area-inset-bottom)+5.5rem)] md:[bottom:calc(env(safe-area-inset-bottom)+1.5rem)] ${
+      className={`fixed right-8 pointer-events-none [bottom:calc(env(safe-area-inset-bottom)+1.5rem)] ${
         visible ? "" : "pointer-events-none"
       }`}
+      style={{ transform: `translateY(-${footerOffset}px)` }}
     >
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
