@@ -14,7 +14,7 @@ export function ScrollToTopButton() {
 
   return (
     <div
-      className={`fixed right-8 z-50 pointer-events-none [bottom:calc(env(safe-area-inset-bottom)+1.5rem)] ${
+      className={`sticky flex justify-end pointer-events-none [bottom:calc(env(safe-area-inset-bottom)+1.5rem)] ${
         visible ? "" : "pointer-events-none"
       }`}
     >
