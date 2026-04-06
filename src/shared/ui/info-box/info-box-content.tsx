@@ -13,7 +13,7 @@ export default function InfoBoxContent({
 }: InfoBoxContentProps) {
   return (
     <DataList.Item>
-      <DataList.Label minWidth="88px" highContrast>
+      <DataList.Label minWidth="88px" highContrast className="font-bold">
         {title}
       </DataList.Label>
       {type === "link" ? (
