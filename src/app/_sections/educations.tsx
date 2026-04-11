@@ -15,7 +15,7 @@ const EDUCATIONS = [
 export default function Education() {
   return (
     <section className="pb-12 border-b border-neutral-200">
-      <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-6">
+      <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">
         학력
       </h2>
       <ul className="space-y-4">
