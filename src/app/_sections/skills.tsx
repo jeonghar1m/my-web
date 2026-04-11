@@ -129,7 +129,7 @@ export default function Skills() {
   return (
     <>
       <section className="mt-12 pb-12 border-b border-neutral-200">
-        <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-6">
+        <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">
           기술 스택
         </h2>
         <div className="space-y-6">

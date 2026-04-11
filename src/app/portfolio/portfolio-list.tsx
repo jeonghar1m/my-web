@@ -21,8 +21,8 @@ export default function PortfolioList({
 
   return (
     <section className="w-full">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">포트폴리오</h2>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">포트폴리오</h2>
         {visibleOrderButton && <SortOrderButton currentSort={currentSort} />}
       </div>
       <PortfolioCards portfolios={displayPortfolios} />
