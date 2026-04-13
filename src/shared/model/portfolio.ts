@@ -10,15 +10,5 @@ export interface Portfolio extends CommonModel {
   startDate: Dayjs;
   endDate?: Dayjs;
   description: string;
-}
-
-export interface PortfolioRow {
-  id: number;
-  title: string;
-  thumbnailUrl: string | null;
-  githubUrl: string | null;
-  productionUrl: string | null;
-  startDate: string;
-  endDate: string | null;
-  description: string | null;
+  teamProject: boolean;
 }

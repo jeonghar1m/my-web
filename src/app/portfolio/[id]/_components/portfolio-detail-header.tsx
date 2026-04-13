@@ -1,11 +1,13 @@
 import { BreadcrumbNav } from "@/shared/ui/breadcrumb";
 import { Portfolio } from "@/shared/model/portfolio";
 
+interface PortfolioDetailHeaderProps {
+  portfolio: Portfolio;
+}
+
 export default function PortfolioDetailHeader({
   portfolio,
-}: {
-  portfolio: Portfolio;
-}) {
+}: PortfolioDetailHeaderProps) {
   return (
     <BreadcrumbNav
       items={[

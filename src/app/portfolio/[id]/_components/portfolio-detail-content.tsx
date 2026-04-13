@@ -2,11 +2,13 @@ import { MarkdownRenderer } from "@/shared/ui/markdown";
 import { Portfolio } from "@/shared/model/portfolio";
 import PortfolioInfoBox from "./portfolio-info-box";
 
+interface PortfolioDetailContentProps {
+  portfolio: Portfolio;
+}
+
 export default function PortfolioDetailContent({
   portfolio,
-}: {
-  portfolio: Portfolio;
-}) {
+}: PortfolioDetailContentProps) {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="text-2xl font-bold">{portfolio.title}</h2>

@@ -1,5 +1,6 @@
 import { YEAR_MONTH_FORMAT } from "@/shared/constants/date";
 import { Portfolio } from "@/shared/model/portfolio";
+import ProjectTypeBadge from "@/shared/ui/project-type-badge";
 import { Card, Inset, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,7 +10,8 @@ interface PortfolioCardProps {
 }
 
 export default function PortfolioCard({ portfolio }: PortfolioCardProps) {
-  const { id, thumbnailUrl, title, startDate, endDate } = portfolio;
+  const { id, thumbnailUrl, title, startDate, endDate, teamProject } =
+    portfolio;
 
   return (
     <Card asChild size="2" className="transition-shadow hover:shadow-lg">
@@ -30,7 +32,7 @@ export default function PortfolioCard({ portfolio }: PortfolioCardProps) {
             )}
           </div>
         </Inset>
-        <div className="space-y-1">
+        <div className="space-y-2">
           <Text
             as="p"
             size="4"
@@ -39,6 +41,7 @@ export default function PortfolioCard({ portfolio }: PortfolioCardProps) {
           >
             {title}
           </Text>
+          <ProjectTypeBadge teamProject={teamProject} />
           <Text as="p" size="2" color="gray">
             {startDate.format(YEAR_MONTH_FORMAT)} ~{" "}
             {endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"}
