@@ -1,10 +1,19 @@
+import { ReactNode } from "react";
 import { DataList, Link, Text } from "@radix-ui/themes";
 
-interface InfoBoxContentProps {
+interface BaseInfoBoxContentProps {
   title: string;
-  type: "link" | "text";
-  content: string;
 }
+
+type InfoBoxContentProps =
+  | (BaseInfoBoxContentProps & {
+      type: "link";
+      content: string;
+    })
+  | (BaseInfoBoxContentProps & {
+      type: "text";
+      content: ReactNode;
+    });
 
 export default function InfoBoxContent({
   title,

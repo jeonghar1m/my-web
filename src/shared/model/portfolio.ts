@@ -10,5 +10,5 @@ export interface Portfolio extends CommonModel {
   startDate: Dayjs;
   endDate?: Dayjs;
   description: string;
-  teamProject?: boolean;
+  teamProject: boolean;
 }
