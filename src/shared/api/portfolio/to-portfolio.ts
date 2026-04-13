@@ -9,7 +9,6 @@ type PortfolioRecord = Omit<
   | "startDate"
   | "endDate"
   | "description"
-  | "teamProject"
 > & {
   thumbnailUrl: string | null;
   githubUrl: string | null;
@@ -17,7 +16,6 @@ type PortfolioRecord = Omit<
   startDate: string;
   endDate: string | null;
   description: string | null;
-  teamProject: boolean | null;
 };
 
 const toPortfolio = (row: PortfolioRecord): Portfolio => ({
@@ -29,7 +27,7 @@ const toPortfolio = (row: PortfolioRecord): Portfolio => ({
   startDate: dayjs(row.startDate),
   endDate: row.endDate ? dayjs(row.endDate) : undefined,
   description: row.description ?? "",
-  teamProject: row.teamProject ?? undefined,
+  teamProject: row.teamProject,
 });
 
 export type { PortfolioRecord };
