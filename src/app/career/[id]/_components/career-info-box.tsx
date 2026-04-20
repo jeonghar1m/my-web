@@ -1,4 +1,5 @@
 import { YEAR_MONTH_FORMAT } from "@/shared/constants/date";
+import { getEmploymentDuration } from "@/shared/lib/employment-duration";
 import { Career } from "@/shared/model/career";
 import { InfoBox, InfoBoxContent } from "@/shared/ui/info-box";
 
@@ -17,7 +18,7 @@ export default function CareerInfoBox({ career }: CareerInfoBoxProps) {
       <InfoBoxContent
         title="재직기간"
         type="text"
-        content={`${startDate.format(YEAR_MONTH_FORMAT)} ~ ${endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"}`}
+        content={`${startDate.format(YEAR_MONTH_FORMAT)} ~ ${endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"} ${getEmploymentDuration(startDate, endDate)}`}
       />
       {workingPlace && (
         <InfoBoxContent title="근무지" type="text" content={workingPlace} />

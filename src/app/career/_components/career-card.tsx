@@ -1,4 +1,5 @@
 import { YEAR_MONTH_FORMAT } from "@/shared/constants/date";
+import { getEmploymentDuration } from "@/shared/lib/employment-duration";
 import { Career } from "@/shared/model/career";
 import { Card, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
@@ -24,7 +25,8 @@ export default function CareerCard({ career }: CareerCardProps) {
           </Text>
           <Text as="span" size="2" color="gray">
             {startDate.format(YEAR_MONTH_FORMAT)} ~{" "}
-            {endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"}
+            {endDate ? endDate.format(YEAR_MONTH_FORMAT) : "현재"}{" "}
+            {getEmploymentDuration(startDate, endDate)}
           </Text>
         </Flex>
       </Link>
