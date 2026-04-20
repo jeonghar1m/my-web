@@ -1,8 +1,9 @@
 import dayjs, { Dayjs } from "dayjs";
 
 export function getEmploymentDuration(startDate: Dayjs, endDate?: Dayjs): string {
-  const end = endDate ?? dayjs();
-  const totalMonths = end.diff(startDate, "month");
+  const end = (endDate ?? dayjs()).startOf("month");
+  const start = startDate.startOf("month");
+  const totalMonths = end.diff(start, "month");
   const years = Math.floor(totalMonths / 12);
   const months = totalMonths % 12;
 
