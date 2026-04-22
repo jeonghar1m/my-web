@@ -9,9 +9,35 @@ import {
   SiVercel,
   SiSupabase,
   SiRadixui,
+  SiRedux,
+  SiZod,
+  SiVitest,
+  SiPlaywright,
 } from "react-icons/si";
 import { TechIconButton } from "@/shared/ui/tech-icon-button";
 import { TechDetailModal, type TechItem } from "@/shared/ui/tech-detail-modal";
+
+function ZustandIcon({ className }: { className?: string }) {
+  return (
+    <img
+      src="https://zustand-demo.pmnd.rs/favicon.ico"
+      alt="Zustand"
+      className={className}
+      aria-hidden="true"
+    />
+  );
+}
+
+function EmotionIcon({ className }: { className?: string }) {
+  return (
+    <img
+      src="https://emotion.sh/logo-48x48.png"
+      alt="Emotion"
+      className={className}
+      aria-hidden="true"
+    />
+  );
+}
 
 const TECH_STACK: TechItem[] = [
   {
@@ -29,6 +55,30 @@ const TECH_STACK: TechItem[] = [
       "서버 컴포넌트를 기본으로 사용하고, 상호작용이 필요한 부분에만 'use client'를 적용해 클라이언트 번들을 최소화",
     url: "https://react.dev",
     Icon: SiReact,
+  },
+  {
+    category: "Library",
+    name: "Zustand",
+    description:
+      "경량 전역 상태 관리 라이브러리. Flux 패턴 없이 간결한 API로 클라이언트 상태를 정의하고, persist 미들웨어로 localStorage 연동도 지원",
+    url: "https://zustand-demo.pmnd.rs",
+    Icon: ZustandIcon,
+  },
+  {
+    category: "Library",
+    name: "Redux",
+    description:
+      "예측 가능한 상태 컨테이너. 단방향 데이터 흐름과 Redux Toolkit으로 복잡한 상태 로직을 구조화하는 데 활용",
+    url: "https://redux.js.org",
+    Icon: SiRedux,
+  },
+  {
+    category: "Library",
+    name: "Zod",
+    description:
+      "TypeScript-first 스키마 선언 및 유효성 검사 라이브러리. API 응답이나 폼 입력 데이터의 런타임 타입 검사에 사용",
+    url: "https://zod.dev",
+    Icon: SiZod,
   },
   {
     category: "Library",
@@ -55,6 +105,14 @@ const TECH_STACK: TechItem[] = [
     Icon: SiRadixui,
   },
   {
+    category: "Styling",
+    name: "Emotion",
+    description:
+      "CSS-in-JS 스타일링 라이브러리. JavaScript 안에서 동적 스타일을 작성하고, styled 컴포넌트와 css prop 두 가지 방식을 지원",
+    url: "https://emotion.sh",
+    Icon: EmotionIcon,
+  },
+  {
     category: "Infrastructure",
     name: "Vercel",
     description:
@@ -70,6 +128,22 @@ const TECH_STACK: TechItem[] = [
     url: "https://supabase.com",
     Icon: SiSupabase,
   },
+  {
+    category: "Testing",
+    name: "Vitest",
+    description:
+      "Vite 기반 유닛·통합 테스트 프레임워크. Jest 호환 API를 제공하며 빠른 실행 속도와 ESM 네이티브 지원이 특징",
+    url: "https://vitest.dev",
+    Icon: SiVitest,
+  },
+  {
+    category: "Testing",
+    name: "Playwright",
+    description:
+      "브라우저 엔드-투-엔드 테스트 도구. Chromium·Firefox·WebKit 멀티 브라우저 지원, CI 환경에서의 안정적인 자동화 테스트에 활용",
+    url: "https://playwright.dev",
+    Icon: SiPlaywright,
+  },
 ];
 
 const CATEGORIES = [
@@ -77,6 +151,7 @@ const CATEGORIES = [
   "Library",
   "Styling",
   "Infrastructure",
+  "Testing",
 ] as const;
 
 export default function TechStackSection() {
