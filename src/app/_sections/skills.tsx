@@ -16,6 +16,7 @@ import {
   SiGithub,
   SiFigma,
   SiVercel,
+  SiSentry,
   SiRedux,
   SiZod,
   SiVitest,
@@ -167,6 +168,13 @@ const SKILLS: TechItem[] = [
     description: "",
     url: "https://vercel.com",
     Icon: SiVercel,
+  },
+  {
+    category: "Tools",
+    name: "Sentry",
+    description: "",
+    url: "https://sentry.io",
+    Icon: SiSentry,
   },
   {
     category: "Testing",
