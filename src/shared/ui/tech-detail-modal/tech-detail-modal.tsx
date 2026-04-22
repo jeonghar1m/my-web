@@ -27,8 +27,8 @@ export default function TechDetailModal({ tech, onClose }: TechDetailModalProps)
   return (
     <ModalOverlay onClose={onClose} size="sm" header={header}>
       <div className="flex items-center gap-4 mb-4">
-        <div className="text-4xl text-neutral-700 dark:text-neutral-300">
-          <tech.Icon />
+        <div className="text-neutral-700 dark:text-neutral-300">
+          <tech.Icon className="w-9 h-9" />
         </div>
         <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
           {tech.name}
