@@ -16,9 +16,30 @@ import {
   SiGithub,
   SiFigma,
   SiVercel,
+  SiRedux,
+  SiZod,
+  SiVitest,
 } from "react-icons/si";
 import { TechIconButton } from "@/shared/ui/tech-icon-button";
 import { TechDetailModal, type TechItem } from "@/shared/ui/tech-detail-modal";
+
+function ZustandIcon({ className }: { className?: string }) {
+  return (
+    <img src="https://zustand-demo.pmnd.rs/favicon.ico" alt="Zustand" className={className} aria-hidden="true" />
+  );
+}
+
+function EmotionIcon({ className }: { className?: string }) {
+  return (
+    <img src="https://emotion.sh/logo-48x48.png" alt="Emotion" className={className} aria-hidden="true" />
+  );
+}
+
+function PlaywrightIcon({ className }: { className?: string }) {
+  return (
+    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" className={className} aria-hidden="true" />
+  );
+}
 
 const SKILLS: TechItem[] = [
   {
@@ -71,6 +92,27 @@ const SKILLS: TechItem[] = [
     Icon: SiReactquery,
   },
   {
+    category: "Library",
+    name: "Zustand",
+    description: "",
+    url: "https://zustand-demo.pmnd.rs",
+    Icon: ZustandIcon,
+  },
+  {
+    category: "Library",
+    name: "Redux",
+    description: "",
+    url: "https://redux.js.org",
+    Icon: SiRedux,
+  },
+  {
+    category: "Library",
+    name: "Zod",
+    description: "",
+    url: "https://zod.dev",
+    Icon: SiZod,
+  },
+  {
     category: "Styling",
     name: "Tailwind CSS",
     description: "",
@@ -99,6 +141,13 @@ const SKILLS: TechItem[] = [
     Icon: SiStyledcomponents,
   },
   {
+    category: "Styling",
+    name: "Emotion",
+    description: "",
+    url: "https://emotion.sh",
+    Icon: EmotionIcon,
+  },
+  {
     category: "Tools",
     name: "GitHub",
     description: "",
@@ -119,9 +168,23 @@ const SKILLS: TechItem[] = [
     url: "https://vercel.com",
     Icon: SiVercel,
   },
+  {
+    category: "Testing",
+    name: "Vitest",
+    description: "",
+    url: "https://vitest.dev",
+    Icon: SiVitest,
+  },
+  {
+    category: "Testing",
+    name: "Playwright",
+    description: "",
+    url: "https://playwright.dev",
+    Icon: PlaywrightIcon,
+  },
 ];
 
-const CATEGORIES = ["Language", "Framework", "Library", "Styling", "Tools"] as const;
+const CATEGORIES = ["Language", "Framework", "Library", "Styling", "Tools", "Testing"] as const;
 
 export default function Skills() {
   const [selectedSkill, setSelectedSkill] = useState<TechItem | null>(null);
