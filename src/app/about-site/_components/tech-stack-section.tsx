@@ -12,7 +12,6 @@ import {
   SiRedux,
   SiZod,
   SiVitest,
-  SiPlaywright,
 } from "react-icons/si";
 import { TechIconButton } from "@/shared/ui/tech-icon-button";
 import { TechDetailModal, type TechItem } from "@/shared/ui/tech-detail-modal";
@@ -22,6 +21,17 @@ function ZustandIcon({ className }: { className?: string }) {
     <img
       src="https://zustand-demo.pmnd.rs/favicon.ico"
       alt="Zustand"
+      className={className}
+      aria-hidden="true"
+    />
+  );
+}
+
+function PlaywrightIcon({ className }: { className?: string }) {
+  return (
+    <img
+      src="https://playwright.dev/img/playwright-logo.svg"
+      alt="Playwright"
       className={className}
       aria-hidden="true"
     />
@@ -142,7 +152,7 @@ const TECH_STACK: TechItem[] = [
     description:
       "브라우저 엔드-투-엔드 테스트 도구. Chromium·Firefox·WebKit 멀티 브라우저 지원, CI 환경에서의 안정적인 자동화 테스트에 활용",
     url: "https://playwright.dev",
-    Icon: SiPlaywright,
+    Icon: PlaywrightIcon,
   },
 ];
 
