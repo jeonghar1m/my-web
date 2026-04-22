@@ -20,12 +20,9 @@ export default function AboutSitePage() {
 
       {/* 기술 스택 */}
       <section className="mb-12">
-        <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+        <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-8">
           기술 스택
         </h2>
-        <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-8">
-          경험해본 기술 스택
-        </p>
         <TechStackSection />
       </section>
     </main>
