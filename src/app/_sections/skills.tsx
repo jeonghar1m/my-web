@@ -26,19 +26,19 @@ import { TechDetailModal, type TechItem } from "@/shared/ui/tech-detail-modal";
 
 function ZustandIcon({ className }: { className?: string }) {
   return (
-    <img src="https://zustand-demo.pmnd.rs/favicon.ico" alt="Zustand" className={className} aria-hidden="true" />
+    <img src="https://zustand-demo.pmnd.rs/favicon.ico" alt="Zustand" className={`grayscale opacity-90 ${className ?? ""}`.trim()} aria-hidden="true" />
   );
 }
 
 function EmotionIcon({ className }: { className?: string }) {
   return (
-    <img src="https://emotion.sh/logo-48x48.png" alt="Emotion" className={className} aria-hidden="true" />
+    <img src="https://emotion.sh/logo-48x48.png" alt="Emotion" className={`grayscale opacity-90 ${className ?? ""}`.trim()} aria-hidden="true" />
   );
 }
 
 function PlaywrightIcon({ className }: { className?: string }) {
   return (
-    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" className={className} aria-hidden="true" />
+    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" className={`grayscale opacity-90 ${className ?? ""}`.trim()} aria-hidden="true" />
   );
 }
 
