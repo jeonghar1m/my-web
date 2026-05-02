@@ -12,27 +12,24 @@ const EDUCATIONS = [
   },
 ];
 
-export default function Education() {
+export default function Educations() {
   return (
     <section className="pb-12 border-b border-neutral-200">
       <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">
         학력
       </h2>
       <ul className="space-y-4">
-        {EDUCATIONS.map((item) => (
-          <li
-            key={item.school}
-            className="flex flex-col sm:flex-row gap-2 sm:gap-8"
-          >
+        {EDUCATIONS.map(({ school, period, major }) => (
+          <li key={school} className="flex flex-col sm:flex-row gap-2 sm:gap-8">
             <span className="text-sm text-neutral-400 dark:text-neutral-500 sm:w-40 shrink-0 pt-0.5">
-              {item.period}
+              {period}
             </span>
             <div>
               <p className="font-medium text-neutral-800 dark:text-neutral-200">
-                {item.school}
+                {school}
               </p>
               <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                {item.major}
+                {major}
               </p>
             </div>
           </li>
