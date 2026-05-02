@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import {
   SiTypescript,
   SiJavascript,
@@ -21,28 +18,10 @@ import {
   SiZod,
   SiVitest,
 } from "react-icons/si";
-import { TechIconButton } from "@/shared/ui/tech-icon-button";
-import { TechDetailModal, type TechItem } from "@/shared/ui/tech-detail-modal";
+import { type TechItem } from "@/shared/ui/tech-detail-modal";
+import { ZustandIcon, EmotionIcon, PlaywrightIcon } from "./skills-icons";
 
-function ZustandIcon({ className }: { className?: string }) {
-  return (
-    <img src="https://zustand-demo.pmnd.rs/favicon.ico" alt="Zustand" className={`grayscale opacity-90 ${className ?? ""}`.trim()} aria-hidden="true" />
-  );
-}
-
-function EmotionIcon({ className }: { className?: string }) {
-  return (
-    <img src="https://emotion.sh/logo-48x48.png" alt="Emotion" className={`grayscale opacity-90 ${className ?? ""}`.trim()} aria-hidden="true" />
-  );
-}
-
-function PlaywrightIcon({ className }: { className?: string }) {
-  return (
-    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" className={`grayscale opacity-90 ${className ?? ""}`.trim()} aria-hidden="true" />
-  );
-}
-
-const SKILLS: TechItem[] = [
+export const SKILLS: TechItem[] = [
   {
     category: "Language",
     name: "TypeScript",
@@ -192,50 +171,11 @@ const SKILLS: TechItem[] = [
   },
 ];
 
-const CATEGORIES = ["Language", "Framework", "Library", "Styling", "Tools", "Testing"] as const;
-
-export default function Skills() {
-  const [selectedSkill, setSelectedSkill] = useState<TechItem | null>(null);
-
-  return (
-    <>
-      <section className="mt-12 pb-12 border-b border-neutral-200">
-        <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">
-          기술 스택
-        </h2>
-        <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
-          경험해본 기술 스택
-        </p>
-        <div className="space-y-6">
-          {CATEGORIES.map((category) => {
-            const items = SKILLS.filter((s) => s.category === category);
-            return (
-              <div key={category}>
-                <h3 className="text-sm font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-3">
-                  {category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <TechIconButton
-                      key={item.name}
-                      icon={item.Icon}
-                      name={item.name}
-                      onClick={() => setSelectedSkill(item)}
-                    />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {selectedSkill && (
-        <TechDetailModal
-          tech={selectedSkill}
-          onClose={() => setSelectedSkill(null)}
-        />
-      )}
-    </>
-  );
-}
+export const CATEGORIES = [
+  "Language",
+  "Framework",
+  "Library",
+  "Styling",
+  "Tools",
+  "Testing",
+] as const;
