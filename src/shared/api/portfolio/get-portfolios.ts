@@ -1,11 +1,9 @@
 import { supabaseServerFrom } from "@/shared/lib/supabase/server";
-import { SortOrder } from "@/shared/model/common";
-import { Portfolio } from "@/shared/model/portfolio";
-import toPortfolio, { PortfolioRecord } from "./to-portfolio";
+import type { SortOrder } from "@/shared/model/common";
+import type { Portfolio } from "@/shared/model/portfolio";
+import toPortfolio, { type PortfolioRecord } from "./to-portfolio";
 
-const getPortfolios = async (sort?: string) => {
-  const sortOrder: SortOrder = sort === "latest" ? "latest" : "oldest";
-
+const getPortfolios = async (sortOrder: SortOrder = "oldest") => {
   const rows = await supabaseServerFrom<PortfolioRecord[]>((client) =>
     client
       .from("portfolio")

@@ -1,9 +1,12 @@
-import { cn } from "@/shared/lib/utils/common";
+"use client";
+
+import type { ComponentType } from "react";
+import { cn } from "@/shared/lib/utils";
 
 interface TechIconButtonProps {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
   name: string;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 export default function TechIconButton({
@@ -21,11 +24,11 @@ export default function TechIconButton({
         "hover:bg-neutral-100 dark:hover:bg-neutral-800",
         "hover:text-neutral-900 dark:hover:text-neutral-100",
         "transition-colors",
-        onClick ? "cursor-pointer" : "cursor-default",
+        "cursor-pointer",
       )}
       aria-label={name}
     >
-      <Icon className="w-8 h-8 flex-shrink-0" />
+      <Icon className="w-8 h-8 flex-shrink-0" aria-hidden />
       <span className="text-xs text-center leading-tight text-neutral-500 dark:text-neutral-500 line-clamp-2">
         {name}
       </span>

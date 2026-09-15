@@ -1,5 +1,5 @@
-import { Dayjs } from "dayjs";
-import { CommonModel } from "./common";
+import type { Dayjs } from "dayjs";
+import type { CommonModel } from "./common";
 
 export interface Career extends CommonModel {
   companyUrl?: string;

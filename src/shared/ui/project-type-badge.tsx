@@ -1,5 +1,5 @@
 import { Badge } from "@radix-ui/themes";
-import { Portfolio } from "../model/portfolio";
+import type { Portfolio } from "@/shared/model/portfolio";
 
 interface ProjectTypeBadgeProps {
   teamProject: Portfolio["teamProject"];

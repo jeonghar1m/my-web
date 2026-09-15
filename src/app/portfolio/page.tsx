@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { PortfolioList } from "@/app/_components/portfolio-list";
 import { getPortfolios } from "@/shared/api/portfolio";
-import PortfolioList from "./portfolio-list";
-import { SortOrder } from "@/shared/model/common";
+import type { SortOrder } from "@/shared/model/common";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +26,7 @@ export default async function PortfolioPage({
     <PortfolioList
       portfolios={portfolios}
       currentSort={sort}
+      headingLevel="h1"
       visibleOrderButton
     />
   );

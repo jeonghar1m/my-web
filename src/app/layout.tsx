@@ -8,7 +8,7 @@ import { Providers } from "./providers";
 import { ScrollToTopButton } from "@/shared/ui/scroll-to-top";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

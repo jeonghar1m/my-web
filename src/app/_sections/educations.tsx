@@ -1,6 +1,7 @@
 import { YEAR_MONTH_FORMAT } from "@/shared/constants/date";
-import { ENROLLMENT_STATUS_LABEL, Education } from "@/shared/model/education";
 import Link from "next/link";
+import { ENROLLMENT_STATUS_LABEL } from "@/shared/model/education";
+import type { Education } from "@/shared/model/education";
 
 interface EducationsProps {
   educations: Education[];
@@ -8,8 +9,14 @@ interface EducationsProps {
 
 export default function Educations({ educations }: EducationsProps) {
   return (
-    <section className="pb-12 border-b border-neutral-200">
-      <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">
+    <section
+      className="pb-12 border-b border-neutral-200"
+      aria-labelledby="educations-heading"
+    >
+      <h2
+        id="educations-heading"
+        className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-6"
+      >
         학력
       </h2>
       <ul className="space-y-4">
