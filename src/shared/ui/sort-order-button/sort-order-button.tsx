@@ -1,6 +1,6 @@
 "use client";
 
-import { SortOrder } from "@/shared/model/common";
+import type { SortOrder } from "@/shared/model/common";
 import { useRouter, usePathname } from "next/navigation";
 import { useTransition } from "react";
 
@@ -22,6 +22,7 @@ export function SortOrderButton({ currentSort }: SortOrderButtonProps) {
 
   return (
     <button
+      type="button"
       onClick={handleToggle}
       disabled={isPending}
       className="cursor-pointer text-sm text-neutral-500 transition-colors hover:text-neutral-900 disabled:opacity-50"

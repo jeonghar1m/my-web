@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { CareerList } from "@/app/_components/career-list";
 import { getCareers } from "@/shared/api/career";
-import CareerList from "./career-list";
-import { SortOrder } from "@/shared/model/common";
+import type { SortOrder } from "@/shared/model/common";
 
 export const dynamic = "force-dynamic";
 
@@ -20,5 +20,12 @@ export default async function CareerPage({
 
   const careers = await getCareers(sort);
 
-  return <CareerList careers={careers} currentSort={sort} visibleOrderButton />;
+  return (
+    <CareerList
+      careers={careers}
+      currentSort={sort}
+      headingLevel="h1"
+      visibleOrderButton
+    />
+  );
 }

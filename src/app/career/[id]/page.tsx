@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import CareerDetailHeader from "./_components/career-detail-header";
-import CareerDetailContent from "./_components/career-detail-content";
-import getCareer from "@/shared/api/career/get-career";
+import {
+  CareerDetailContent,
+  CareerDetailHeader,
+} from "@/app/_components/career-detail";
+import { getCareer } from "@/shared/api/career";
 
 export const dynamic = "force-dynamic";
 

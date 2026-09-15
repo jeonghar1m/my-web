@@ -19,19 +19,20 @@ const SOCIAL_LINKS = [
 
 export default function SocialLinks() {
   return (
-    <div className="flex gap-3 ml-auto">
+    <ul className="ml-auto flex gap-3" aria-label="소셜 링크">
       {SOCIAL_LINKS.map((link) => (
-        <a
-          key={link.label}
-          href={link.href}
-          aria-label={link.label}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-neutral-500 hover:text-neutral-300 transition-colors cursor-pointer"
-        >
-          <link.icon size={20} />
-        </a>
+        <li key={link.label}>
+          <a
+            href={link.href}
+            aria-label={link.label}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer text-neutral-500 transition-colors hover:text-neutral-300"
+          >
+            <link.icon size={20} aria-hidden />
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

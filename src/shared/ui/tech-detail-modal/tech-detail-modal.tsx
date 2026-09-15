@@ -1,7 +1,8 @@
 "use client";
 
 import { ExternalLink } from "lucide-react";
-import { cn } from "@/shared/lib/utils/common";
+import type { ComponentType } from "react";
+import { cn } from "@/shared/lib/utils";
 import ModalOverlay from "@/shared/ui/modal/modal-overlay";
 
 export interface TechItem {
@@ -9,7 +10,7 @@ export interface TechItem {
   description: string;
   url?: string;
   category: string;
-  Icon: React.ComponentType<{ className?: string }>;
+  Icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
 }
 
 interface TechDetailModalProps {
@@ -25,10 +26,15 @@ export default function TechDetailModal({ tech, onClose }: TechDetailModalProps)
   );
 
   return (
-    <ModalOverlay onClose={onClose} size="sm" header={header}>
+    <ModalOverlay
+      ariaLabel={`${tech.name} 기술 상세`}
+      onClose={onClose}
+      size="sm"
+      header={header}
+    >
       <div className="flex items-center gap-4 mb-4">
         <div className="text-neutral-700 dark:text-neutral-300">
-          <tech.Icon className="w-9 h-9" />
+          <tech.Icon className="h-9 w-9" aria-hidden />
         </div>
         <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
           {tech.name}
@@ -37,7 +43,7 @@ export default function TechDetailModal({ tech, onClose }: TechDetailModalProps)
       <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
         {tech.description}
       </p>
-      {tech.url && (
+      {Boolean(tech.url) && (
         <a
           href={tech.url}
           target="_blank"
@@ -50,7 +56,7 @@ export default function TechDetailModal({ tech, onClose }: TechDetailModalProps)
           )}
         >
           공식 사이트
-          <ExternalLink size={14} />
+          <ExternalLink size={14} aria-hidden />
         </a>
       )}
     </ModalOverlay>

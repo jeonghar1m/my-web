@@ -7,6 +7,21 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "*.public.blob.vercel-storage.com",
       },
+      {
+        protocol: "https",
+        hostname: "zustand-demo.pmnd.rs",
+        pathname: "/favicon.ico",
+      },
+      {
+        protocol: "https",
+        hostname: "emotion.sh",
+        pathname: "/logo-48x48.png",
+      },
+      {
+        protocol: "https",
+        hostname: "playwright.dev",
+        pathname: "/img/playwright-logo.svg",
+      },
     ],
   },
 };

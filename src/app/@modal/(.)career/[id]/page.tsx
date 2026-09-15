@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
+import {
+  CareerDetailContent,
+  CareerDetailHeader,
+} from "@/app/_components/career-detail";
+import { getCareer } from "@/shared/api/career";
 import { ModalOverlay } from "@/shared/ui/modal";
-import CareerDetailHeader from "@/app/career/[id]/_components/career-detail-header";
-import CareerDetailContent from "@/app/career/[id]/_components/career-detail-content";
-import getCareer from "@/shared/api/career/get-career";
 
 export default async function CareerModalPage({
   params,
@@ -15,8 +17,11 @@ export default async function CareerModalPage({
   if (!career) notFound();
 
   return (
-    <ModalOverlay header={<CareerDetailHeader career={career} />}>
-      <CareerDetailContent career={career} />
+    <ModalOverlay
+      ariaLabel={`${career.title} 경력 상세`}
+      header={<CareerDetailHeader career={career} />}
+    >
+      <CareerDetailContent career={career} headingLevel="h2" />
     </ModalOverlay>
   );
 }

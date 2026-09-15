@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import PortfolioDetailHeader from "./_components/portfolio-detail-header";
-import PortfolioDetailContent from "./_components/portfolio-detail-content";
+import {
+  PortfolioDetailContent,
+  PortfolioDetailHeader,
+} from "@/app/_components/portfolio-detail";
 import { getPortfolio } from "@/shared/api/portfolio";
 
 export const dynamic = "force-dynamic";

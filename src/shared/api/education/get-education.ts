@@ -1,7 +1,7 @@
 import { supabaseServerFrom } from "@/shared/lib/supabase/server";
-import { Education } from "@/shared/model/education";
 import { cache } from "react";
-import toEducation, { EducationRecord } from "./to-education";
+import type { Education } from "@/shared/model/education";
+import toEducation, { type EducationRecord } from "./to-education";
 
 const getEducation = cache(async (id: number): Promise<Education | null> => {
   try {

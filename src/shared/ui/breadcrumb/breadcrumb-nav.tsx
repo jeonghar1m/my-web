@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import Link from "next/link";
 import {
   Breadcrumb,
@@ -21,7 +21,7 @@ export default function BreadcrumbNav({ items }: { items: BreadcrumbNavItem[] })
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           return (
-            <React.Fragment key={item.label}>
+            <Fragment key={item.label}>
               {index > 0 && <BreadcrumbSeparator />}
               <BreadcrumbItem>
                 {isLast || !item.href ? (
@@ -32,7 +32,7 @@ export default function BreadcrumbNav({ items }: { items: BreadcrumbNavItem[] })
                   </BreadcrumbLink>
                 )}
               </BreadcrumbItem>
-            </React.Fragment>
+            </Fragment>
           );
         })}
       </BreadcrumbList>

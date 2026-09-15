@@ -1,11 +1,9 @@
 import { supabaseServerFrom } from "@/shared/lib/supabase/server";
-import { SortOrder } from "@/shared/model/common";
-import { Education } from "@/shared/model/education";
-import toEducation, { EducationRecord } from "./to-education";
+import type { SortOrder } from "@/shared/model/common";
+import type { Education } from "@/shared/model/education";
+import toEducation, { type EducationRecord } from "./to-education";
 
-const getEducations = async (sort?: string) => {
-  const sortOrder: SortOrder = sort === "latest" ? "latest" : "oldest";
-
+const getEducations = async (sortOrder: SortOrder = "oldest") => {
   const rows = await supabaseServerFrom<EducationRecord[]>((client) =>
     client
       .from("education")
@@ -13,7 +11,9 @@ const getEducations = async (sort?: string) => {
       .order("startDate", { ascending: sortOrder !== "latest" }),
   );
 
-  return rows.map(toEducation) as Education[];
+  const educations: Education[] = rows.map(toEducation);
+
+  return educations;
 };
 
 export default getEducations;

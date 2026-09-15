@@ -1,5 +1,5 @@
-import { Portfolio } from "@/shared/model/portfolio";
 import dayjs from "dayjs";
+import type { Portfolio } from "@/shared/model/portfolio";
 
 type PortfolioRecord = Omit<
   Portfolio,

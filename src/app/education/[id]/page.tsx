@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import getEducation from "@/shared/api/education/get-education";
-import EducationDetailHeader from "./_components/education-detail-header";
-import EducationDetailContent from "./_components/education-detail-content";
+import {
+  EducationDetailContent,
+  EducationDetailHeader,
+} from "@/app/_components/education-detail";
+import { getEducation } from "@/shared/api/education";
 
 export const dynamic = "force-dynamic";
 
