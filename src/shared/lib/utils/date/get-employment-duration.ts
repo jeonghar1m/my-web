@@ -1,0 +1,21 @@
+import dayjs from "dayjs";
+import type { Dayjs } from "dayjs";
+
+export default function getEmploymentDuration(
+  startDate: Dayjs,
+  endDate?: Dayjs,
+): string {
+  const end = (endDate ?? dayjs()).startOf("month");
+  const start = startDate.startOf("month");
+  const totalMonths = end.diff(start, "month");
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  const parts: string[] = [];
+  if (years > 0) parts.push(`${years}년`);
+  if (months > 0) parts.push(`${months}개월`);
+  if (!parts.length) parts.push("1개월 미만");
+
+  return `(${parts.join(" ")})`;
+}
+

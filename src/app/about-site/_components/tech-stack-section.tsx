@@ -88,30 +88,31 @@ export default function TechStackSection() {
 
   return (
     <>
-      <div className="space-y-8">
+      <ul className="space-y-8">
         {CATEGORIES.map((category) => {
           const items = TECH_STACK.filter((item) => item.category === category);
           return (
-            <div key={category}>
+            <li key={category}>
               <h3 className="text-sm font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
                 {category}
               </h3>
-              <div className="flex flex-wrap gap-4">
+              <ul className="flex flex-wrap gap-4">
                 {items.map((tech) => (
-                  <TechIconButton
-                    key={tech.name}
-                    icon={tech.Icon}
-                    name={tech.name}
-                    onClick={() => handleClick(tech)}
-                  />
+                  <li key={tech.name}>
+                    <TechIconButton
+                      icon={tech.Icon}
+                      name={tech.name}
+                      onClick={() => handleClick(tech)}
+                    />
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </li>
           );
         })}
-      </div>
+      </ul>
 
-      {selectedTech && (
+      {selectedTech != null && (
         <TechDetailModal
           tech={selectedTech}
           onClose={() => setSelectedTech(null)}

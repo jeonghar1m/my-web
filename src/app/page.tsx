@@ -1,9 +1,9 @@
-import getCareers from "@/shared/api/career/get-careers";
-import getEducations from "@/shared/api/education/get-educations";
-import getPortfolios from "@/shared/api/portfolio/get-portfolios";
+import { CareerList } from "@/app/_components/career-list";
+import { PortfolioList } from "@/app/_components/portfolio-list";
+import { getCareers } from "@/shared/api/career";
+import { getEducations } from "@/shared/api/education";
+import { getPortfolios } from "@/shared/api/portfolio";
 import { Educations, Hero, Skills } from "./_sections";
-import CareerList from "./career/career-list";
-import PortfolioList from "./portfolio/portfolio-list";
 
 export default async function HomePage() {
   const [careers, portfolios, educations] = await Promise.all([

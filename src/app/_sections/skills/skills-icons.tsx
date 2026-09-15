@@ -1,10 +1,13 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 
 export function ZustandIcon({ className }: { className?: string }) {
   return (
-    <img
+    <Image
       src="https://zustand-demo.pmnd.rs/favicon.ico"
-      alt="Zustand"
+      alt=""
+      width={32}
+      height={32}
+      unoptimized
       className={`grayscale opacity-90 ${className ?? ""}`.trim()}
       aria-hidden="true"
     />
@@ -13,9 +16,12 @@ export function ZustandIcon({ className }: { className?: string }) {
 
 export function EmotionIcon({ className }: { className?: string }) {
   return (
-    <img
+    <Image
       src="https://emotion.sh/logo-48x48.png"
-      alt="Emotion"
+      alt=""
+      width={32}
+      height={32}
+      unoptimized
       className={`grayscale opacity-90 ${className ?? ""}`.trim()}
       aria-hidden="true"
     />
@@ -24,9 +30,12 @@ export function EmotionIcon({ className }: { className?: string }) {
 
 export function PlaywrightIcon({ className }: { className?: string }) {
   return (
-    <img
+    <Image
       src="https://playwright.dev/img/playwright-logo.svg"
-      alt="Playwright"
+      alt=""
+      width={32}
+      height={32}
+      unoptimized
       className={`grayscale opacity-90 ${className ?? ""}`.trim()}
       aria-hidden="true"
     />

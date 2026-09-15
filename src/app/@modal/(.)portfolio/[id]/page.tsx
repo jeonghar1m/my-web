@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
-import { ModalOverlay } from "@/shared/ui/modal";
-import PortfolioDetailHeader from "@/app/portfolio/[id]/_components/portfolio-detail-header";
-import PortfolioDetailContent from "@/app/portfolio/[id]/_components/portfolio-detail-content";
+import {
+  PortfolioDetailContent,
+  PortfolioDetailHeader,
+} from "@/app/_components/portfolio-detail";
 import { getPortfolio } from "@/shared/api/portfolio";
+import { ModalOverlay } from "@/shared/ui/modal";
 
 export default async function PortfolioModalPage({
   params,
@@ -15,8 +17,11 @@ export default async function PortfolioModalPage({
   if (!portfolio) notFound();
 
   return (
-    <ModalOverlay header={<PortfolioDetailHeader portfolio={portfolio} />}>
-      <PortfolioDetailContent portfolio={portfolio} />
+    <ModalOverlay
+      ariaLabel={`${portfolio.title} 포트폴리오 상세`}
+      header={<PortfolioDetailHeader portfolio={portfolio} />}
+    >
+      <PortfolioDetailContent portfolio={portfolio} headingLevel="h2" />
     </ModalOverlay>
   );
 }

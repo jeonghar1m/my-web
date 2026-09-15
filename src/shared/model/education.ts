@@ -1,5 +1,5 @@
-import { Dayjs } from "dayjs";
-import { CommonModel } from "./common";
+import type { Dayjs } from "dayjs";
+import type { CommonModel } from "./common";
 
 export const ENROLLMENT_STATUS = {
   /** 재학 */
@@ -14,9 +14,10 @@ export const ENROLLMENT_STATUS = {
   COMPLETED: "COMPLETED",
 } as const;
 
-export type ENROLLMENT_STATUS = keyof typeof ENROLLMENT_STATUS;
+export type EnrollmentStatus =
+  (typeof ENROLLMENT_STATUS)[keyof typeof ENROLLMENT_STATUS];
 
-export const ENROLLMENT_STATUS_LABEL: Record<ENROLLMENT_STATUS, string> = {
+export const ENROLLMENT_STATUS_LABEL: Record<EnrollmentStatus, string> = {
   ATTENDING: "재학",
   GRADUATED: "졸업(학사)",
   DROPPED: "중퇴",
@@ -28,7 +29,7 @@ export interface Education extends CommonModel {
   description?: string;
   startDate: Dayjs;
   endDate?: Dayjs;
-  enrollmentStatus: ENROLLMENT_STATUS;
+  enrollmentStatus: EnrollmentStatus;
   major: string;
   location: string;
 }

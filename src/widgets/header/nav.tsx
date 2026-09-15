@@ -6,7 +6,7 @@ export default async function Nav() {
 
   if (!isVisibleHeaderNav) return null;
   return (
-    <nav className="mt-6 flex gap-3">
+    <nav className="mt-6 flex gap-3" aria-label="주요 메뉴">
       <Link
         href="/about-site"
         className="border border-neutral-500 px-5 py-1.5 text-sm text-neutral-300 hover:text-white hover:border-neutral-300 transition-colors"

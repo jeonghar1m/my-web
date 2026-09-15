@@ -1,5 +1,5 @@
-import { Career } from "@/shared/model/career";
 import dayjs from "dayjs";
+import type { Career } from "@/shared/model/career";
 
 type CareerRecord = Omit<
   Career,

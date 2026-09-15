@@ -1,11 +1,9 @@
 import { supabaseServerFrom } from "@/shared/lib/supabase/server";
-import { Career } from "@/shared/model/career";
-import { SortOrder } from "@/shared/model/common";
-import toCareer, { CareerRecord } from "./to-career";
+import type { Career } from "@/shared/model/career";
+import type { SortOrder } from "@/shared/model/common";
+import toCareer, { type CareerRecord } from "./to-career";
 
-const getCareers = async (sort?: string) => {
-  const sortOrder: SortOrder = sort === "latest" ? "latest" : "oldest";
-
+const getCareers = async (sortOrder: SortOrder = "oldest") => {
   const rows = await supabaseServerFrom<CareerRecord[]>((client) =>
     client
       .from("career")

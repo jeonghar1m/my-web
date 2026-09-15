@@ -1,7 +1,7 @@
 import { supabaseServerFrom } from "@/shared/lib/supabase/server";
-import { Portfolio } from "@/shared/model/portfolio";
 import { cache } from "react";
-import toPortfolio, { PortfolioRecord } from "./to-portfolio";
+import type { Portfolio } from "@/shared/model/portfolio";
+import toPortfolio, { type PortfolioRecord } from "./to-portfolio";
 
 const getPortfolio = cache(async (id: number): Promise<Portfolio | null> => {
   try {
